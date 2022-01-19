@@ -1,7 +1,7 @@
 {
-  "name": "Kyy-Userbot",
-  "description": "KYY-USERBOT KHUSUS YANG DIGUNAKAN UNTUK BERSENANG-SENANG DI TELEGRAM.",
-  "logo": "https://telegra.ph/file/276d22aac9f400898cd27.jpg",
+  "name": "Hiroshi-Userbot",
+  "description": "HIROSHI-USERBOT KHUSUS YANG DIGUNAKAN UNTUK BERSENANG-SENANG DI TELEGRAM.",
+  "logo": "https://telegra.ph/file/3400adce36ef93f8e6cf0.jpg",
   "keywords": [
     "telegram",
     "userbot",
@@ -9,9 +9,9 @@
     "modular",
     "productivity"
   ],
-  "repository": "https://github.com/muhammadrizky16/Kyy-Userbot/Kyy-Userbot",
-  "telegram": "https://t.me/IDnyaKosong",
-  "success_url": "https://t.me/NastyProject",
+  "repository": "https://github.com/UserbotMaps/Hiroshi-Userbot/Hiroshi-Userbot",
+  "telegram": "https://t.me/Bisubiarenak",
+  "success_url": "https://t.me/bombleebas",
   "stack": "container",
   "env": {
     "API_KEY": {
@@ -86,7 +86,7 @@
     },
     "DEFAULT_BIO": {
       "description": "Default Bio Mu.",
-      "value": "✨Kyy-Userbot✨",
+      "value": "✨Hiroshi-Userbot✨",
       "required": false
     },
     "ALIVE_NAME": {
@@ -95,12 +95,12 @@
     },
      "ALIVE_LOGO": {
       "description": "Gambar dalam module .alive",
-      "value": "https://telegra.ph/file/276d22aac9f400898cd27.jpg",
+      "value": "https://telegra.ph/file/bddcb2468a685639748b5.jpg",
       "required": false
     },
     "KYY_TEKS_KUSTOM": {
       "description": "Kustom Pesan Alive Mu Untuk Perintah .kyyalive (Isi Terserah)",
-      "value": "I'am Using Kyy-Userbot ✨",
+      "value": "I'am Using Hiroshi-Userbot ✨",
       "required": false 
     },
     "S_PACK_NAME": {
