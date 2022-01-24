@@ -570,7 +570,7 @@ with bot:
             current_page_number = int(lockpage)
             buttons = paginate_help(current_page_number, plugins, "helpme")
             await event.edit(
-                file=Hiroshilogo,
+                file=kyylogo,
                 buttons=buttons,
                 link_preview=False,
             )
@@ -589,7 +589,7 @@ with bot:
                     f"© @Bisubiarenak")
                 await event.edit(
                     text,
-                    file=Hiroshilogo,
+                    file=kyylogo,
                     link_preview=True,
                     buttons=[
                         [custom.Button.inline("ᴄʟᴏꜱᴇ", data="closed")],
@@ -610,7 +610,7 @@ with bot:
                     f"{DEFAULTUSER}Pilih dari opsi di bawah ini :")
                 await event.edit(
                     text,
-                    file=Hiroshilogo,
+                    file=kyylogo,
                     link_preview=True,
                     buttons=[
                         [custom.Button.inline("ᴀʟɪᴠᴇ", data="alive")],
@@ -636,7 +636,7 @@ with bot:
                     f"Menu Lainnya ! Untuk {DEFAULTUSER}")
                 await event.edit(
                     text,
-                    file=Hiroshilogo,
+                    file=kyylogo,
                     link_preview=True,
                     buttons=[
                         [custom.Button.inline("ᴜᴘᴅᴀᴛᴇ", data="pembaruan")],
@@ -667,7 +667,7 @@ with bot:
                     f"© @Bisubiarenak")
                 await event.edit(
                     text,
-                    file=Hiroshilogo,
+                    file=kyylogo,
                     link_preview=True,
                     buttons=[
                         [
@@ -697,7 +697,7 @@ with bot:
                     f"© @Bisubiarenak")
                 await event.edit(
                     text,
-                    file=Hiroshilogo,
+                    file=kyylogo,
                     link_preview=True,
                     buttons=[
                         [
@@ -727,7 +727,7 @@ with bot:
                     f"© @Bisubiarenak")
                 await event.edit(
                     text,
-                    file=Hiroshilogo,
+                    file=kyylogo,
                     link_preview=True,
                     buttons=[
                         [
@@ -755,7 +755,7 @@ with bot:
                     f"© @Bisubiarenak")
                 await event.edit(
                     text,
-                    file=Hiroshilogo,
+                    file=kyylogo,
                     link_preview=True,
                     buttons=[
                         [
@@ -785,7 +785,7 @@ with bot:
                     f"© @Bisubiarenak")
                 await event.edit(
                     text,
-                    file=Hiroshilogo,
+                    file=kyylogo,
                     link_preview=True,
                     buttons=[
                         [
@@ -813,7 +813,7 @@ with bot:
                     f"**PONG!!**\n `{ms}ms`")
                 await event.edit(
                     text,
-                    file=Hiroshilogo,
+                    file=kyylogo,
                     link_preview=True,
                     buttons=[
                         [
@@ -850,7 +850,7 @@ with bot:
                     f"© @Bisubiarenak")
                 await event.edit(
                     text,
-                    file=Hiroshilogo,
+                    file=kyylogo,
                     link_preview=True,
                     buttons=[
                         [
@@ -873,7 +873,7 @@ with bot:
                     f"**Restaring Hiroshi-Userbot**...")
                 await event.edit(
                     text,
-                    file=Hiroshilogo,
+                    file=kyylogo,
                     link_preview=True,
                     buttons=[
                         [
@@ -893,7 +893,7 @@ with bot:
                     f"Closed Menu!")
                 await event.edit(
                     text,
-                    file=Hiroshilogo,
+                    file=kyylogo,
                     link_preview=True,
                     buttons=[
                         [
@@ -911,7 +911,7 @@ with bot:
                     ""):
                 buttons = paginate_help(0, dugmeler, "helpme")
                 result = builder.photo(
-                    file=Hiroshilogo,
+                    file=kyylogo,
                     link_preview=False,
                     text=f"Usᴇʀʙᴏᴛ​ Tᴇʟᴇɢʀᴀᴍ\n\n**ɪɴʟɪɴᴇ ᴍᴇɴᴜ​​**\n\n❥ **ʙᴏᴛ ᴏꜰ :** {DEFAULTUSER}\n❥ **ʙᴏᴛ ᴠᴇʀ :** 5.0\n❥ **ᴍᴏᴅᴜʟᴇꜱ :** {len(plugins)}\n❥ **ʙᴏᴛʏᴏᴜ :** @{BOT_USERNAME}".format(
                         len(dugmeler),
@@ -971,7 +971,7 @@ with bot:
             if event.query.user_id == uid:  # userbot
                 # https://t.me/TelethonChat/115200
                 await event.edit(
-                    file=Hiroshilogo,
+                    file=kyylogo,
                     link_preview=True,
                     buttons=[
                         [
