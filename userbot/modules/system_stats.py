@@ -231,12 +231,12 @@ async def amireallyalive(alive):
         f" **❒ ʜɪʀᴏsʜɪ-ᴜsᴇʀʙᴏᴛ ❒** \n\n"
         f"\n__**{HIRO_TEKS_KUSTOM}**__\n\n\n"
         f"╭✠╼━━━━━━━━━━━━━━━✠╮\n"
-        f"◙ `Name       :` {DEFAULTUSER} \n"
-        f"◙ `Username   :` @{user.username} \n"
-        f"◙ `Telethon   :` {version.__version__} \n"
-        f"◙ `Python     :` {python_version()} \n"
-        f"◙ `Bot Ver    :` {BOT_VER} \n"
-        f"◙ `Modules    :` {len(modules)} \n"
+        f"❒ `Name       :` {DEFAULTUSER} \n"
+        f"❒ `Username   :` @{user.username} \n"
+        f"❒ `Telethon   :` {version.__version__} \n"
+        f"❒ `Python     :` {python_version()} \n"
+        f"❒ `Bot Ver    :` {BOT_VER} \n"
+        f"❒ `Modules    :` {len(modules)} \n"
         f"╰✠╼━━━━━━━━━━━━━━━✠╯\n"
         f"[ɢʀᴏᴜᴘꜱ](https://t.me/hiroshisupport) | [ᴄʜᴀɴɴᴇʟ](https://t.me/bombleebas) | [ᴏᴡɴᴇʀ](https://t.me/Bisubiarenak) | [ɢɪᴛʜᴜʙ](https://github.com/UserbotMaps/Hiroshi-Userbot)")
     if ALIVE_LOGO:
@@ -265,12 +265,12 @@ async def amireallyalive(alive):
     await get_readable_time((time.time() - StartTime))
     output = (
         f"●▬▬▬▬▬▬ஜ۩۞۩ஜ▬▬▬▬▬▬● \n"
-        f"✾ 🤴 • `ᴏᴡɴᴇʀ    :`[Hiroshi](t.me/Bisubiarenak) \n"
-        f"✾ 🖥️ • `ꜱʏꜱᴛᴇᴍ   :`Ubuntu 20.10 \n"
-        f"✾ ⚙️ • `ᴛᴇʟᴇᴛʜᴏɴ :`v.{version.__version__} \n"
-        f"✾ 🐍 • `ᴘʏᴛʜᴏɴ   :`v.{python_version()} \n"
-        f"✾ 👾 • `ʙᴏᴛ      :`v.{BOT_VER} \n"
-        f"✾ 📂 • `ᴍᴏᴅᴜʟᴇ   :`{len(modules)} \n"
+        f"❒ 🤴 • `ᴏᴡɴᴇʀ    :`[Hiroshi](t.me/Bisubiarenak) \n"
+        f"❒ 🖥️ • `ꜱʏꜱᴛᴇᴍ   :`Ubuntu 20.10 \n"
+        f"❒ ⚙️ • `ᴛᴇʟᴇᴛʜᴏɴ :`v.{version.__version__} \n"
+        f"❒ 🐍 • `ᴘʏᴛʜᴏɴ   :`v.{python_version()} \n"
+        f"❒ 👾 • `ʙᴏᴛ      :`v.{BOT_VER} \n"
+        f"❒ 📂 • `ᴍᴏᴅᴜʟᴇ   :`{len(modules)} \n"
         f"●▬▬▬▬▬▬ஜ۩۞۩ஜ▬▬▬▬▬▬●")
     if ALIVE_LOGO:
         try:
