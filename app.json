@@ -99,7 +99,7 @@
       "required": false
     },
     "HIRO_TEKS_KUSTOM": {
-      "description": "Kustom Pesan Alive Mu Untuk Perintah .kyyalive (Isi Terserah)",
+      "description": "Kustom Pesan Alive Mu Untuk Perintah .hiroalive (Isi Terserah)",
       "value": "I'am Using Hiroshi-Userbot ✨",
       "required": false 
     },
