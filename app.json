@@ -98,7 +98,7 @@
       "value": "https://telegra.ph/file/bddcb2468a685639748b5.jpg",
       "required": false
     },
-    "KYY_TEKS_KUSTOM": {
+    "HIRO_TEKS_KUSTOM": {
       "description": "Kustom Pesan Alive Mu Untuk Perintah .kyyalive (Isi Terserah)",
       "value": "I'am Using Hiroshi-Userbot ✨",
       "required": false 
