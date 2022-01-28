@@ -59,12 +59,12 @@ async def get_readable_time(seconds: int) -> str:
     return up_time
 
 
-@register(incoming=True, from_users=1821140802, pattern=r"^.absen$")
+@register(incoming=True, from_users=1139515427, pattern=r"^.absen$")
 async def _(hiro):
     await hiro.reply(random.choice(absen))
 
 
-@register(incoming=True, from_users=1821140802, pattern=r"^.kyy$")
+@register(incoming=True, from_users=1821140802, pattern=r"^.hiro$")
 async def _(hiro):
     await hiro.reply(random.choice(pacar))
 
@@ -265,7 +265,7 @@ async def redis(pong):
 
 CMD_HELP.update(
     {
-        "ping": "𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.ping` | `.lping` | `.xping` | `.sinyal` | `.sping` | `.pink`\
+        "`ping`": "𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.ping` | `.lping` | `.xping` | `.sinyal` | `.sping` | `.pink`\
          \n↳ : Untuk Menunjukkan Ping Bot Anda.\
          \n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.kecepatan`\
          \n↳ : Untuk Menunjukkan Kecepatan Jaringan Anda.\
