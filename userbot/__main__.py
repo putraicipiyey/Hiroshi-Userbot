@@ -20,6 +20,7 @@ from userbot import (
     ALIVE_NAME,
     hiroblacklist,
     bot,
+    call_py, 
 )
 from userbot.modules import ALL_MODULES
 from userbot.utils import autobot
