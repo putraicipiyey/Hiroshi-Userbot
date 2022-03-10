@@ -9,7 +9,6 @@ import random
 import pybase64
 import sys
 
-from base64 import b64decode
 from sys import version_info
 from logging import basicConfig, getLogger, INFO, DEBUG
 from distutils.util import strtobool as sb
@@ -30,12 +29,6 @@ from telethon.sessions import StringSession
 from telethon import Button, events, functions, types
 from telethon.tl.types import InputWebDocument
 from telethon.utils import get_display_name
-
-from .storage import Storage
-
-
-def STORAGE(n):
-    return Storage(Path("data") / n)
 
 
 redis_db = None
