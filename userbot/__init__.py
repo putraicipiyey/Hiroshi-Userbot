@@ -836,8 +836,6 @@ with bot:
             "Pergi Ke @BotFather lalu settings bot » Pilih mode inline » Turn On. ")
     try:
         bot.loop.run_until_complete(check_botlog_chatid())
-    except BaseException:
-        LOGS.info(
-            "except BaseException as e:
+    except BaseException as e:
         LOGS.exception(f"[BOTLOG] - {e}")
         sys.exit(1)
