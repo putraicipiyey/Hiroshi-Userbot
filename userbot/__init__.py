@@ -826,7 +826,8 @@ with bot:
                     )
                 )
             else:
-                f"reply_pop_up_alert = f"Kamu Tidak diizinkan, ini Userbot Milik {DEFAULTUSER} Nanti Kena Ghosting"
+                f"reply_pop_up_alert = f"Kamu Tidak diizinkan, ini Userbot Milik {DEFAULTUSER}"
+            await event.answer(reply_pop_up_alert, cache_time=0, alert=True)"
 
     except BaseException:
         LOGS.info(
