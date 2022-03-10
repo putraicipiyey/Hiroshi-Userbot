@@ -26,16 +26,7 @@ from userbot.modules import ALL_MODULES
 from userbot.utils import autobot
 
 try:
-    bot.start()
-    user = bot.get_me()
-    hiroblacklist = requests.get(
-        "https://raw.githubusercontent.com/UserbotMaps/hiroblack/master/hiroblacklist.json"
-    ).json()
-    if user.id in hiroblacklist:
-        LOGS.warning(
-            "MAKANYA GA USAH BERTINGKAH GOBLOK, USERBOTnya GUA MATIIN NAJIS BANGET DIPAKE ORANG KEK LU.\nCredits: @Bisubiarenak"
-        )
-        sys.exit(1)
+    sys.exit(1)
 except Exception as e:
     LOGS.info(str(e), exc_info=True)
     sys.exit(1)
