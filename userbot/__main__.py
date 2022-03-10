@@ -18,8 +18,7 @@ from userbot import (
     BOT_VER,
     LOGS,
     ALIVE_NAME,
-    bot,
-    call_py, 
+    bot, 
 )
 from userbot.modules import ALL_MODULES
 from userbot.utils import autobot
