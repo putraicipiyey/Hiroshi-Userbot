@@ -826,7 +826,7 @@ with bot:
                     )
                 )
             else:
-                f"reply_pop_up_alert = f"Kamu Tidak diizinkan, ini Userbot Milik {DEFAULTUSER}"
+                reply_pop_up_alert = f"Kamu Tidak diizinkan, ini Userbot Milik {owner}"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)"
 
     except BaseException:
