@@ -26,10 +26,10 @@ from userbot.modules import ALL_MODULES
 from userbot.utils import autobot
 
 try:
-    sys.exit(1)
-except Exception as e:
-    LOGS.info(str(e), exc_info=True)
-    sys.exit(1)
+    bot.start()
+except PhoneNumberInvalidError:
+    print(INVALID_PH)
+    exit(1)
 
 for module_name in ALL_MODULES:
     imported_module = import_module("userbot.modules." + module_name)
