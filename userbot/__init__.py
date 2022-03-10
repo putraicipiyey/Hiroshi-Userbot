@@ -255,11 +255,11 @@ S_PACK_NAME = os.environ.get("S_PACK_NAME", None)
 
 # Default .alive Logo
 ALIVE_LOGO = os.environ.get(
-    "ALIVE_LOGO") or "https://telegra.ph/file/040c6a31ae08e75059ccf.jpg"
+    "ALIVE_LOGO") or "https://telegra.ph/file/276d22aac9f400898cd27.jpg"
 
 # Default .helpme Logo
 INLINE_PIC = os.environ.get(
-    "INLINE_PIC") or "https://telegra.ph/file/040c6a31ae08e75059ccf.jpg"
+    "INLINE_PIC") or "https://telegra.ph/file/276d22aac9f400898cd27.jpg"
 
 # Default emoji help
 EMOJI_HELP = os.environ.get("EMOJI_HELP") or "✨"
@@ -268,6 +268,13 @@ EMOJI_HELP = os.environ.get("EMOJI_HELP") or "✨"
 OWNER_URL = os.environ.get("OWNER_URL") or "https://t.me/Bisubiarenak"
 
 DEFAULT = list(map(int, b64decode("MTY2MzI1ODY2NA==").split()))
+
+# Picture For VCPLUGIN
+PLAY_PIC = (os.environ.get("PLAY_PIC")
+            or "https://telegra.ph/file/6213d2673486beca02967.png")
+
+QUEUE_PIC = (os.environ.get("QUEUE_PIC")
+             or "https://telegra.ph/file/d6f92c979ad96b2031cba.png")
 
 # Last.fm Module
 BIO_PREFIX = os.environ.get("BIO_PREFIX", None)
