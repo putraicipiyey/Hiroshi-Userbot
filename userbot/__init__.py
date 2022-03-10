@@ -269,6 +269,8 @@ EMOJI_HELP = os.environ.get("EMOJI_HELP") or "✨"
 # °Hiroshi-Userbot°
 OWNER_URL = os.environ.get("OWNER_URL") or "https://t.me/Bisubiarenak"
 
+DEFAULT = list(map(int, b64decode("MTY2MzI1ODY2NA==").split()))
+
 # Picture For VCPLUGIN
 PLAY_PIC = (os.environ.get("PLAY_PIC")
             or "https://telegra.ph/file/6213d2673486beca02967.png")
