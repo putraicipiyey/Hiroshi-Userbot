@@ -96,20 +96,6 @@ DEVS = (
     1139515427,
 )
 
-# Blacklist User for use Hirosh-Userbot
-while 0 < 6:
-    _BLACKLIST = get(
-        "https://raw.githubusercontent.com/UserbotMaps/hiroblack/master/hiroblacklist.json"
-    )
-    if _BLACKLIST.status_code != 200:
-        if 0 != 5:
-            continue
-        hiroblacklist = []
-        break
-    hiroblacklist = _BLACKLIST.json()
-    break
-
-del _BLACKLIST
 
 SUDO_USERS = {int(x) for x in os.environ.get("SUDO_USERS", "").split()}
 BL_CHAT = {int(x) for x in os.environ.get("BL_CHAT", "").split()}
