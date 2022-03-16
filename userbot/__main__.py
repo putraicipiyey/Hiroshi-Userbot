@@ -17,7 +17,6 @@ from userbot import (
     BOT_TOKEN,
     BOT_VER,
     LOGS,
-    ALIVE_NAME,
     bot, 
 )
 from userbot.modules import ALL_MODULES
@@ -33,7 +32,7 @@ for module_name in ALL_MODULES:
     imported_module = import_module("userbot.modules." + module_name)
 
 LOGS.info(
-    f"Jika {ALIVE_NAME} Membutuhkan Bantuan, Silahkan Tanyakan di Grup https://t.me/hiroshisupport")
+    f"Jika {user.first_name} Membutuhkan Bantuan, Silahkan Tanyakan di Grup https://t.me/hiroshisupport")
 LOGS.info(
     f"🔥Hiroshi-Userbot🔥 ⚙️ V{BOT_VER} [TELAH DIAKTIFKAN!]")
 
