@@ -13,7 +13,7 @@ from userbot import (  # noqa pylint: disable=unused-import isort:skip
     BOTLOG,
     BOTLOG_CHATID,
     CMD_HELP,
-    ALIVE_NAME,
+    OWNER,
     COUNT_MSG,
     ISAFK,
     PM_AUTO_BAN,
