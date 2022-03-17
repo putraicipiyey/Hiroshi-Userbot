@@ -22,7 +22,6 @@ from userbot import (  # noqa pylint: disable=unused-import isort:skip
     bot,
 )
 from userbot.events import register
-from userbot.utils import kyy_cmd
 
 # ========================= CONSTANTS ============================
 AFKSTR = [
