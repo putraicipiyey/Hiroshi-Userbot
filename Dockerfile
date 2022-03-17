@@ -11,6 +11,5 @@ RUN git clone -b Hiroshi-Userbot https://github.com/UserbotMaps/Hiroshi-Userbot 
     && chmod 777 /home/Hiroshi-Userbot \
     && mkdir /home/Hiroshi-Userbot/bin/
 WORKDIR /home/Hiroshi-Userbot/
-COPY ./sample_config.env ./config.env* /home/Hiroshi-Userbot/
 RUN pip install -r requirements.txt
 CMD ["python3", "-m", "userbot"]
