@@ -227,7 +227,7 @@ HIRO_TEKS_KUSTOM = os.environ.get("HIRO_TEKS_KUSTOM", "I'am Using Hiroshi-Userbo
 START_WELCOME = os.environ.get("START_WELCOME", None)
 
 # Default .alive Name
-ALIVE_NAME = os.environ.get("ALIVE_NAME", Hiro)
+ALIVE_NAME = os.environ.get("ALIVE_NAME", "Hiro")
 
 # Time & Date - Country and Time Zone
 COUNTRY = str(os.environ.get("COUNTRY", "ID"))
