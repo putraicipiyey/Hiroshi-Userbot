@@ -1,4 +1,4 @@
-FROM Hiroex/Hiroshi-userbot:busterv2
+FROM kyyex/Hiroshi-userbot:busterv2
 RUN apt-get update
 RUN apt-get install -y --no-install-recommends \
     curl \
