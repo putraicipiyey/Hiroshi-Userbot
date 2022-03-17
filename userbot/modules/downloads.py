@@ -18,9 +18,9 @@ from youtube_dl.utils import (ContentTooShortError, DownloadError,
 from youtubesearchpython import SearchVideos
 
 from userbot.events import register
-from userbot import CMD_HELP, ALIVE_NAME
+from userbot import CMD_HELP, owner
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
+
 
 
 @register(outgoing=True, pattern=r"^\.song (.*)")
@@ -106,7 +106,7 @@ Connected to server...
         rip_data["title"], rip_data["uploader"]
     )
     await event.edit(f"`{upteload}`")
-    CAPT = f"╭┈────────────────┈\n➥ {rip_data['title']}\n➥ Uploader - {rip_data['uploader']}\n╭┈────────────────┈╯\n➥ By : {DEFAULTUSER}\n╰┈────────────────┈➤"
+    CAPT = f"╭┈────────────────┈\n➥ {rip_data['title']}\n➥ Uploader - {rip_data['uploader']}\n╭┈────────────────┈╯\n➥ By : {owner}\n╰┈────────────────┈➤"
     await event.client.send_file(
         event.chat_id,
         f"{rip_data['id']}.mp3",
