@@ -42,7 +42,6 @@ from userbot import BLACKLIST_CHAT
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
 from userbot.events import register
-from userbot.modules.ping import absen
 from userbot.utils import edit_delete, edit_or_reply, get_user_from_event, hiro_cmd
 
 
