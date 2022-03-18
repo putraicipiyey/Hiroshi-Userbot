@@ -1,9 +1,10 @@
 from platform import uname
-from userbot import owner, CMD_HELP, CMD_HANDLER as cmd
+from userbot import ALIVE_NAME, CMD_HELP, CMD_HANDLER as cmd
 from userbot.events import register
 
-
-
+# ================= KONSTAN ===================
+DEFAULTUSER  =  str ( ALIVE_NAME ) jika  ALIVE_NAME  lain  uname (). simpul
+# ==============================================
 
 @register(outgoing=True, pattern="^.p(?: |$)(.*)")
 async def typewriter(typew):
@@ -29,7 +30,7 @@ async def perkenalan(event):
 @register(outgoing=True, pattern="^.perkenalan(?: |$)(.*)")
 async def perkenalan(event):
     event.pattern_match.group(1)
-    await event.edit(f"`Hai Guys , Perkenalkan Nama Gw {owner}`")
+    await event.edit(f"`Hai Guys , Perkenalkan Nama Gw {DEFAULTUSER}`")
     sleep(2)
     await event.edit(f"`Gw Tinggal Di {WEATHER_DEFCITY}`")
     sleep(2)
