@@ -2,9 +2,6 @@ from platform import uname
 from userbot import ALIVE_NAME, CMD_HELP, CMD_HANDLER as cmd
 from userbot.events import register
 
-# ================= KONSTAN ===================
-DEFAULTUSER  =  str ( ALIVE_NAME ) jika  ALIVE_NAME  lain  uname (). simpul
-# ==============================================
 
 @register(outgoing=True, pattern="^.p(?: |$)(.*)")
 async def typewriter(typew):
