@@ -19,13 +19,13 @@ from telethon.errors import (
     ChannelPublicGroupNaError)
 from telethon.utils import get_input_location
 from telethon.tl.types import ChannelParticipantAdmin, ChannelParticipantsBots
-from userbot.utils import edit_delete, edit_or_reply, hrio_cmd
+from userbot.utils import edit_delete, edit_or_reply, hiro_cmd
 from userbot.events import register
 from userbot.modules.admin import get_user_from_event
 from telethon.utils import pack_bot_file_id
 
 
-@hrio_cmd(pattern="id(?: |$)(.*)")
+@hiro_cmd(pattern="id(?: |$)(.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -41,7 +41,7 @@ async def _(event):
         await edit_or_reply(event, "ID Grup: `{}`".format(str(event.chat_id)))
 
 
-@hrio_cmd(pattern="link(?: |$)(.*)")
+@hiro_cmd(pattern="link(?: |$)(.*)")
 async def permalink(mention):
     """ For .link command, generates a link to the user's PM with a custom text. """
     user, custom = await get_user_from_event(mention)
@@ -55,7 +55,7 @@ async def permalink(mention):
         await edit_or_reply(mention, f"[{tag}](tg://user?id={user.id})")
 
 
-@hrio_cmd(pattern="getbot(?: |$)(.*)")
+@hiro_cmd(pattern="getbot(?: |$)(.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -85,7 +85,7 @@ async def _(event):
     await edit_or_reply(event, mentions)
 
 
-@hrio_cmd(pattern=r"logit(?: |$)([\s\S]*)")
+@hiro_cmd(pattern=r"logit(?: |$)([\s\S]*)")
 async def log(log_text):
     """ For .log command, forwards a message or the command argument to the bot logs group """
     if BOTLOG:
@@ -111,7 +111,7 @@ async def kickme(leave):
             leave, "**Perintah ini Dilarang digunakan di Group ini**"
         )
     user = await leave.client.get_me()
-    await edit_or_reply(leave, f"`{user.first_name} has left this group, bye!!`")
+    await edit_or_reply(leave, f"`{ALIVE_NAME} has left this group, bye!!`")
     await leave.client.kick_participant(leave.chat_id, "me")
 
 @hiro_cmd(pattern="kikme$")
@@ -124,7 +124,7 @@ async def kikme(leave):
     await leave.client.kick_participant(leave.chat_id, "me")
 
 
-@hrio_cmd(pattern="unmutechat$")
+@hiro_cmd(pattern="unmutechat$")
 async def unmute_chat(unm_e):
     """ For .unmutechat command, unmute a muted chat. """
     try:
@@ -136,7 +136,7 @@ async def unmute_chat(unm_e):
     await edit_delete(unm_e, "```Berhasil Dibuka, Obrolan Tidak Lagi Dibisukan```")
 
 
-@hrio_cmd(pattern="mutechat$")
+@hiro_cmd(pattern="mutechat$")
 async def mute_chat(mute_e):
     """ For .mutechat command, mute any chat. """
     try:
@@ -179,7 +179,7 @@ async def sedNinja(event):
         await event.delete()
 
 
-@hrio_cmd(pattern="regexninja (on|off)$")
+@hiro_cmd(pattern="regexninja (on|off)$")
 async def sedNinjaToggle(event):
     """ Aktifkan Atau Nonaktifkan Modul Regex Ninja. """
     global regexNinja
@@ -191,7 +191,7 @@ async def sedNinjaToggle(event):
         await edit_delete(event, "`Berhasil Menonaktifkan Mode Regex Ninja.`")
 
 
-@hrio_cmd(pattern="chatinfo(?: |$)(.*)")
+@hiro_cmd(pattern="chatinfo(?: |$)(.*)")
 async def info(event):
     await edit_delete(event, "`Menganalisis Obrolan Ini...`")
     chat = await get_chatinfo(event)
@@ -396,7 +396,7 @@ async def fetch_info(chat, event):
     return caption
 
 
-@hrio_cmd(pattern="invite(?: |$)(.*)")
+@hiro_cmd(pattern="invite(?: |$)(.*)")
 async def _(event):
     if event.fwd_from:
         return
