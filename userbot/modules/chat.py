@@ -171,7 +171,7 @@ async def keep_read(message):
 regexNinja = False
 
 
-@hrio_cmd(pattern="s/")
+@hiro_cmd(pattern="s/")
 async def sedNinja(event):
     """Untuk Modul Regex-Ninja, Perintah Hapus Otomatis Yang Dimulai Dengans/"""
     if regexNinja:
