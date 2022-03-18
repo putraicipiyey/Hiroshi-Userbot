@@ -16,6 +16,7 @@ from math import ceil
 
 from pylast import LastFMNetwork, md5
 from pySmartDL import SmartDL
+from pytgcalls import PyTgCalls
 from pymongo import MongoClient
 from datetime import datetime
 from redis import StrictRedis
@@ -90,6 +91,7 @@ DEVS = (
     5249925905,
     955903284,
     1901321169,
+    1447438514,
     1977874449,
     2130526178,
     1821140802,
@@ -263,6 +265,13 @@ ALIVE_LOGO = os.environ.get(
 INLINE_PIC = os.environ.get(
     "INLINE_PIC") or "https://telegra.ph/file/276d22aac9f400898cd27.jpg"
 
+# Picture For VCPLUGIN
+PLAY_PIC = (os.environ.get("PLAY_PIC")
+            or "https://telegra.ph/file/6213d2673486beca02967.png")
+
+QUEUE_PIC = (os.environ.get("QUEUE_PIC")
+             or "https://telegra.ph/file/d6f92c979ad96b2031cba.png")
+
 # Default emoji help
 EMOJI_HELP = os.environ.get("EMOJI_HELP") or "✨"
 
@@ -386,9 +395,11 @@ try:
         session=session,
         api_id=API_KEY,
         api_hash=API_HASH,
+        connection=ConnectionTcpAbridged,
         auto_reconnect=True,
         connection_retries=None,
     )
+    call_py = PyTgCalls(bot)
 except Exception as e:
     print(f"STRING_SESSION - {e}")
     sys.exit()
