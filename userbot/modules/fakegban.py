@@ -5,9 +5,12 @@ from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import ChannelParticipantsAdmins
 #from userbot.utils import admin_cmd
 from userbot.events import register
-from userbot import owner, CMD_HELP, bot, CMD_HANDLER as cmd
+from userbot import ALIVE_NAME, CMD_HELP, bot, CMD_HANDLER as cmd
 
 
+# ================= CONSTANT =================
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
+# ============================================
 
 
 @register(outgoing=True, pattern="^.fgban(?: |$)(.*)")
@@ -16,7 +19,7 @@ async def gbun(event):
         return
     gbunVar = event.text
     gbunVar = gbunVar[6:]
-    mentions = f"`Warning!! User 𝙂𝘽𝘼𝙉𝙉𝙀𝘿 By` {owner}\n"
+    mentions = f"`Warning!! User 𝙂𝘽𝘼𝙉𝙉𝙀𝘿 By` {DEFAULTUSER}\n"
     no_reason = "No Reason Given "
     await event.edit("**Summoning out the mighty gban hammer ☠️**")
     asyncio.sleep(3.5)
@@ -36,7 +39,7 @@ async def gbun(event):
         else:
             jnl = ("`Warning!!`"
                    "[{}](tg://user?id={})"
-                   f"` 𝙂𝘽𝘼𝙉𝙉𝙀𝘿 By` {owner}\n\n"
+                   f"` 𝙂𝘽𝘼𝙉𝙉𝙀𝘿 By` {DEFAULTUSER}\n\n"
                    "**Name: ** __{}__\n"
                    "**ID : ** `{}`\n"
                    ).format(firstname, idd, firstname, idd)
@@ -53,7 +56,7 @@ async def gbun(event):
             await reply_message.reply(jnl)
     else:
         mention = (
-            f"Warning!! User 𝙂𝘽𝘼𝙉𝙉𝙀𝘿 By {owner} \nReason: No Reason Given. ")
+            f"Warning!! User 𝙂𝘽𝘼𝙉𝙉𝙀𝘿 By {DEFAULTUSER} \nReason: No Reason Given. ")
         await event.reply(mention)
     await event.delete()
 
