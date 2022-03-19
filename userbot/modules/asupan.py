@@ -1,55 +1,85 @@
 # 🍀 © @tofik_dn
 # ⚠️ Do not remove credits
 
-import requests
 
+from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
-from userbot.events import register
+from userbot.utils import hiro_cmd
+import random
+from telethon.tl.types import InputMessagesFilterVideo
+from telethon.tl.types import InputMessagesFilterVoice
+from telethon.tl.types import InputMessagesFilterPhotos
 
 
-@register(outgoing=True, pattern=r"^\.asupan$")
+@hiro_cmd(pattern="asupan$")
 async def _(event):
     try:
-        response = requests.get(
-            "https://api-tede.herokuapp.com/api/asupan/ptl").json()
-        await event.client.send_file(event.chat_id, response["url"])
+        asupannya = [
+            asupan
+            async for asupan in event.client.iter_messages(
+                "@IndomieGantengV3", filter=InputMessagesFilterVideo
+            )
+        ]
+        aku = await event.client.get_me()
+        await event.client.send_file(
+            event.chat_id,
+            file=random.choice(asupannya),
+            caption=f"**Asupan by** [{aku.first_name}](tg://user?id={aku.id})")
+
         await event.delete()
     except Exception:
-        await event.edit("**Tidak bisa menemukan video asupan.**")
+        await event.edit("**Tidak dapat menemukan video asupan.**")
 
 
-@register(outgoing=True, pattern=r"^\.chika$")
+@hiro_cmd(pattern="desah$")
 async def _(event):
     try:
-        response = requests.get(
-            "https://api-tede.herokuapp.com/api/chika").json()
-        await event.client.send_file(event.chat_id, response["url"])
+        desahannya = [
+            desah
+            async for desah in event.client.iter_messages(
+                "@IndomieGanteng", filter=InputMessagesFilterVoice
+            )
+        ]
+        aku = await event.client.get_me()
+        await event.client.send_file(
+            event.chat_id,
+            file=random.choice(desahannya),
+            caption=f"**Desahan by** [{aku.first_name}](tg://user?id={aku.id})")
+
         await event.delete()
     except Exception:
-        await event.edit("**Tidak bisa menemukan video chikakiku.**")
+        await event.edit("**Tidak dapat menemukan vn desah.**")
 
 
-@register(outgoing=True, pattern=r"^\.bocil$")
+@hiro_cmd(pattern="ayang$")
 async def _(event):
     try:
-        response = requests.get(
-            "https://api-alphabot.herokuapp.com/api/asupan/bocil?apikey=Alphabot"
-        ).json()
-        await event.client.send_file(event.chat_id, response["url"])
+        ayangnya = [
+            ayang
+            async for ayang in event.client.iter_messages(
+                "@IndomieGantengV2", filter=InputMessagesFilterPhotos
+            )
+        ]
+        aku = await event.client.get_me()
+        await event.client.send_file(
+            event.chat_id,
+            file=random.choice(ayangnya),
+            caption=f"**Ayang by** [{aku.first_name}](tg://user?id={aku.id})")
+
         await event.delete()
     except Exception:
-        await event.edit("**Tidak bisa menemukan video bocil.**")
+        await event.edit("**GA ADA YANG MAU SAMA LO, MAKANYA GANTENK.**")
 
 
 CMD_HELP.update(
     {
-        "asupan": "**Plugin : **`asupan`\
-        \n\n  •  **Syntax :** `.asupan`\
+        "asupan": f"**Plugin : **`asupan`\
+        \n\n  •  **Syntax :** `{cmd}asupan`\
         \n  •  **Function : **Untuk Mengirim video asupan secara random.\
-        \n\n  •  **Syntax :** `.chika`\
-        \n  •  **Function : **Untuk Mengirim video chikakiku secara random.\
-        \n\n  •  **Syntax :** `.bocil`\
-        \n  •  **Function : **Untuk Mengirim video bocil secara random.\
+        \n\n  •  **Syntax :** `{cmd}desah`\
+        \n  •  **Function : **Untuk Mengirim voice desah secara random.\
+        \n\n  •  **Syntax :** `{cmd}ayang`\
+        \n  •  **Function : **Untuk Mencari ayang buat cowok yang jomblo.\
     "
     }
 )
