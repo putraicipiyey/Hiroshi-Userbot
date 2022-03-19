@@ -130,7 +130,7 @@ PMPERMIT_TEXT = os.environ.get("PMPERMIT_TEXT", None)
 
 # Custom Pmpermit pic
 PMPERMIT_PIC = os.environ.get(
-    "PMPERMIT_PIC") or "https://telegra.ph/file/4b49392b7d0e8c6a408e8.jpg"
+    "PMPERMIT_PIC") or "https://telegra.ph/file/040c6a31ae08e75059ccf.jpg"
 
 # Bleep Blop, this is a bot ;)
 PM_AUTO_BAN = sb(os.environ.get("PM_AUTO_BAN", "False"))
@@ -264,11 +264,11 @@ S_PACK_NAME = os.environ.get("S_PACK_NAME", None)
 
 # Default .alive Logo
 ALIVE_LOGO = os.environ.get(
-    "ALIVE_LOGO") or "https://telegra.ph/file/276d22aac9f400898cd27.jpg"
+    "ALIVE_LOGO") or "https://telegra.ph/file/040c6a31ae08e75059ccf.jpg"
 
 # Default .helpme Logo
 INLINE_PIC = os.environ.get(
-    "INLINE_PIC") or "https://telegra.ph/file/276d22aac9f400898cd27.jpg"
+    "INLINE_PIC") or "https://telegra.ph/file/040c6a31ae08e75059ccf.jpg"
 
 # Picture For VCPLUGIN
 PLAY_PIC = (os.environ.get("PLAY_PIC")
