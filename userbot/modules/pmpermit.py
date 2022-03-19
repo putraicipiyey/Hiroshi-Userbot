@@ -39,13 +39,13 @@ LASTMSG = {}
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
 CUSTOM_TEXT = str(
-    PMPERMIT_TEXT) if PMPERMIT_TEXT else f"Halo kawan, saya bot yang menjaga room chat Hiroshi-Userbot {DEFAULTUSER} di mohon jangan melakukan spam , kalau anda melakukan itu OTOMATIS saya akan memblockir anda \n"
+    PMPERMIT_TEXT) if PMPERMIT_TEXT else f"Halo kawan, saya bot yang menjaga room chat Hiroshi-Userbot {DEFAULTUSER} di mohon jangan melakukan spam , kalau anda melakukan itu OTOMATIS saya akan memblockir anda! \n"
 DEF_UNAPPROVED_MSG = (
     "╔═════════════════════╗\n"
-    " 🔥 PESAN OTOMATIS KNTL 🔥  \n"
+    "   🔥 PESAN OTOMATIS KNTL 🔥  \n"
     "╚═════════════════════╝\n"
-    "**ANAK KONTOL ANAK NGENTOT,KALO NGECHAT MAJIKAN {DEFAULTUSER} ITU SALAM** \n"
-    f"**HABIS ITU SABAR TUNGGU MAJIKAN GUA BALES,\nKALO GA DI BALES - BALES, LU JANGAN NYEPAM KONTOL, KAYA ANAK YATIM MAU MINTA SEMBAKO LU ANJING, APA LAGI LU NGECHAT NYA CUMA MINTA VCS, BISA GUA BLOKIR!! KALO NYEPAM JUGA TAR GUA BLOKIR!!!! TUNGGU SI {DEFAULTUSER} NERIMA PESAN LU [🔥]({PMPERMIT_PIC})** \n"
+    "**ᴛᴏʟᴏɴɢ ᴊᴀɴɢᴀɴ ᴍᴇʟᴀᴋᴜᴋᴀɴ sᴘᴀᴍ ᴄʜᴀᴛ ᴋᴇᴘᴀᴅᴀ** {DEFAULTUSER} \n"
+    f"**ᴋᴀʀᴇɴᴀ sᴀʏᴀ ᴀᴋᴀɴ ᴏᴛᴏᴍᴀᴛɪs ᴍᴇᴍʙʟᴏᴋɪʀ ᴋᴀᴍᴜ, ᴛᴜɴɢɢᴜ sᴀᴍᴘᴀɪ** {DEFAULTUSER} \nᴍᴇɴᴇʀɪᴍᴀ ᴘᴇsᴀɴ ᴋᴀᴍᴜ ʏᴀ ᴋᴏɴᴛᴏʟ [🔥]({PMPERMIT_PIC})** \n"
     "╔═════════════════════╗\n"
     "│○› **ᴘᴇsᴀɴ ᴏᴛᴏᴍᴀᴛɪs**           \n"
     f"│○› **ᴊᴏɪɴ ᴛᴏʟ** || @hiroshisupport           \n"
