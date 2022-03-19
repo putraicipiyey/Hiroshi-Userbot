@@ -24,6 +24,7 @@ from userbot.utils import autobot
 
 try:
     bot.start()
+    user = bot.get_me()
 except PhoneNumberInvalidError:
     print(INVALID_PH)
     exit(1)
