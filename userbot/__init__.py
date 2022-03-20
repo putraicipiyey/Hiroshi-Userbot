@@ -261,6 +261,9 @@ CLEAN_WELCOME = sb(os.environ.get("CLEAN_WELCOME", "True"))
 # Zipfile Module
 ZIP_DOWNLOAD_DIRECTORY = os.environ.get("ZIP_DOWNLOAD_DIRECTORY", "./zips")
 
+# °Hiroshi-Userbot°
+OWNER_URL = os.environ.get("OWNER_URL") or "https://t.me/Bisubiarenak"
+
 # bit.ly Module
 BITLY_TOKEN = os.environ.get(
     "BITLY_TOKEN") or "o_1fpd9299vp"
