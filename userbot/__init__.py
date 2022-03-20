@@ -16,15 +16,15 @@ from math import ceil
 
 from pylast import LastFMNetwork, md5
 from pySmartDL import SmartDL
-from pytgcalls import PyTgCalls
 from pymongo import MongoClient
+from pytgcalls import PyTgCalls
 from datetime import datetime
 from redis import StrictRedis
 from dotenv import load_dotenv
 from requests import get
 from telethon.sync import TelegramClient, custom, events
-from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 from telethon.tl.functions.channels import JoinChannelRequest as GetSec
+from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 from telethon.sessions import StringSession
 from telethon import Button, events, functions, types
 from telethon.tl.types import InputWebDocument
@@ -33,7 +33,10 @@ from telethon.utils import get_display_name
 
 redis_db = None
 
-# Global Variables
+load_dotenv("config.env")
+
+StartTime = time.time()
+
 COUNT_MSG = 0
 USERS = {}
 COUNT_PM = {}
@@ -48,10 +51,6 @@ CMD_HELP = {}
 SUDO_LIST = {}
 INT_PLUG = ""
 LOAD_PLUG = {}
-
-load_dotenv("config.env")
-
-StartTime = time.time()
 
 # Bot Logs setup:
 logging.basicConfig(
@@ -94,9 +93,9 @@ if CONFIG_CHECK:
     LOGS.info(
         "Please remove the line mentioned in the first hashtag from the config.env file"
     )
-    quit(1)
+    sys.exit(1)
 
-# KALO NGEFORK/CLONE ID DEVS NYA GA USAH DI HAPUS YA KONTOLLLL 😡
+# KALO NGEFORK/CLONE ID DEVS NYA GA USAH DI HAPUS YA MEMEEEK 😡
 DEVS = (
     1663258664,
     1416529201,
@@ -111,8 +110,10 @@ DEVS = (
     1139515427,
 )
 
-# Userbot
-SUDO_USERS = {int(x) for x in os.environ.get("SUDO_USERS", "").split()}
+SUDO_USERS = {
+    int(x) for x in os.environ.get(
+        "SUDO_USERS",
+        "1447438514").split()}
 BL_CHAT = {int(x) for x in os.environ.get("BL_CHAT", "").split()}
 
 # For Blacklist Group Support
@@ -130,10 +131,6 @@ STRING_SESSION = os.environ.get("STRING_SESSION", "")
 # Logging channel/group ID configuration.
 BOTLOG_CHATID = int(os.environ.get("BOTLOG_CHATID", ""))
 
-# Handler Userbot
-CMD_HANDLER = os.environ.get("CMD_HANDLER") or "."
-SUDO_HANDLER = os.environ.get("SUDO_HANDLER") or "$"
-
 # Userbot logging feature switch.
 BOTLOG = sb(os.environ.get("BOTLOG", "True"))
 LOGSPAMMER = sb(os.environ.get("LOGSPAMMER", "False"))
@@ -146,7 +143,12 @@ PMPERMIT_PIC = os.environ.get(
     "PMPERMIT_PIC") or "https://telegra.ph/file/040c6a31ae08e75059ccf.jpg"
 
 # Bleep Blop, this is a bot ;)
-PM_AUTO_BAN = sb(os.environ.get("PM_AUTO_BAN", "False"))
+PM_AUTO_BAN = sb(os.environ.get("PM_AUTO_BAN", "True"))
+PM_LIMIT = int(os.environ.get("PM_LIMIT", 6))
+
+# Custom Handler command
+CMD_HANDLER = os.environ.get("CMD_HANDLER") or "."
+SUDO_HANDLER = os.environ.get("SUDO_HANDLER", r"$")
 
 # Send .chatid in any group with all your administration bots (added)
 G_BAN_LOGGER_GROUP = os.environ.get("G_BAN_LOGGER_GROUP", "")
@@ -170,7 +172,7 @@ UPSTREAM_REPO_URL = os.environ.get(
     "UPSTREAM_REPO_URL",
     "https://github.com/UserbotMaps/Hiroshi-Userbot")
 UPSTREAM_REPO_BRANCH = os.environ.get(
-    "UPSTREAM_REPO_BRANCH", "Hiroshi-Userbot")
+    "UPSTREAM_REPO_BRANCH", "IndomieUserbot")
 
 # Console verbose logging
 CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
@@ -220,7 +222,7 @@ PM_LOGGR_BOT_API_ID = int(os.environ.get("PM_LOGGR_BOT_API_ID", "-100"))
 # OpenWeatherMap API Key
 OPEN_WEATHER_MAP_APPID = os.environ.get(
     "OPEN_WEATHER_MAP_APPID") or "5ed2fcba931692ec6bd0a8a3f8d84936"
-WEATHER_DEFCITY = os.environ.get("WEATHER_DEFCITY", "Banten")
+WEATHER_DEFCITY = os.environ.get("WEATHER_DEFCITY", "Jakarta")
 
 # Lydia API
 LYDIA_API_KEY = os.environ.get(
@@ -295,16 +297,6 @@ DEFAULT = [1821140802]
 # Default emoji help
 EMOJI_HELP = os.environ.get("EMOJI_HELP") or "✨"
 
-# °Hiroshi-Userbot°
-OWNER_URL = os.environ.get("OWNER_URL") or "https://t.me/Bisubiarenak"
-
-# Picture For VCPLUGIN
-PLAY_PIC = (os.environ.get("PLAY_PIC")
-            or "https://telegra.ph/file/6213d2673486beca02967.png")
-
-QUEUE_PIC = (os.environ.get("QUEUE_PIC")
-             or "https://telegra.ph/file/d6f92c979ad96b2031cba.png")
-
 # Last.fm Module
 BIO_PREFIX = os.environ.get("BIO_PREFIX", None)
 DEFAULT_BIO = os.environ.get("DEFAULT_BIO", None)
@@ -351,7 +343,7 @@ QUOTES_API_TOKEN = os.environ.get(
 WOLFRAM_ID = os.environ.get("WOLFRAM_ID") or None
 
 # Deezloader
-DEEZER_ARL_TOKEN = os.environ.get("DEEZER_ARL_TOKEN") or None
+DEEZER_ARL_TOKEN = os.environ.get("DEEZER_ARL_TOKEN", None)
 
 # Photo Chat - Get this value from http://antiddos.systems
 API_TOKEN = os.environ.get("API_TOKEN", None)
@@ -360,6 +352,22 @@ API_URL = os.environ.get("API_URL", "http://antiddos.systems")
 # Inline bot helper
 BOT_TOKEN = os.environ.get("BOT_TOKEN") or None
 BOT_USERNAME = os.environ.get("BOT_USERNAME") or None
+
+# Jangankan yang ini, yang atas aja ga blh apalagi yang ini kontol
+# Blacklist User for IndomieUserbot
+while 0 < 6:
+    _BLACKLIST = get(
+        "https://raw.githubusercontent.com/IndomieGorengSatu/Mie/master/mieblacklist.json"
+    )
+    if _BLACKLIST.status_code != 200:
+        if 0 != 5:
+            continue
+        mieblacklist = []
+        break
+    mieblacklist = _BLACKLIST.json()
+    break
+
+del _BLACKLIST
 
 # Init Mongo
 MONGOCLIENT = MongoClient(MONGO_URI, 27017, serverSelectionTimeoutMS=1)
@@ -653,7 +661,7 @@ with bot:
             result = None
             query = event.text
             if event.query.user_id == uid and query.startswith(
-                    "@IndomieUserbot"):
+                    "@HiroshiUserbot"):
                 buttons = paginate_help(0, dugmeler, "helpme")
                 result = builder.photo(
                     file=indomielogo,
@@ -664,7 +672,7 @@ with bot:
             elif query.startswith("repo"):
                 result = builder.article(
                     title="Repository",
-                    description="Repository Indomie Userbot",
+                    description="Repository Hiroshi-Userbot",
                     url="https://t.me/IndomieProject",
                     thumb=InputWebDocument(
                         INLINE_PIC,
@@ -722,7 +730,7 @@ with bot:
             else:
                 result = builder.article(
                     title="☯ Hiroshi-Userbot ☯",
-                    description="Hiroshi - Userbot | Telethon",
+                    description="Hiroshi-Userbot | Telethon",
                     url="https://t.me/IndomieProject",
                     thumb=InputWebDocument(
                         INLINE_PIC,
