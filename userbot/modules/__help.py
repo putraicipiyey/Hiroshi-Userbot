@@ -1,7 +1,6 @@
-from userbot import BOT_USERNAME, CMD_HELP, bot, user
+from userbot import BOT_USERNAME, CMD_HELP, bot
 from userbot.utils import edit_delete, edit_or_reply, hiro_cmd
 
-DEFAULTUSER = user.first_name
 CUSTOM_HELP_EMOJI = "✨"
 
 
@@ -22,7 +21,7 @@ async def cmd_list(event):
     else:
         try:
             results = await bot.inline_query(  # pylint:disable=E0602
-                BOT_USERNAME, "@IndomieUserbot"
+                BOT_USERNAME, "@HiroshiUserbot"
             )
             await results[0].click(
                 event.chat_id, reply_to=event.reply_to_msg_id, hide_via=True
