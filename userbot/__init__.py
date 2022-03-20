@@ -410,28 +410,6 @@ except Exception as e:
     sys.exit()
 
 
-async def checking():
-    gocheck = str(pybase64.b64decode("QE5hc3R5UHJvamVjdA=="))[2:15]
-    checker = str(pybase64.b64decode("QE5hc3R5U3VwcG9ydHQ="))[2:16]
-    try:
-        await bot(GetSec(gocheck))
-    except BaseException:
-        pass
-    try:
-        await bot(GetSec(checker))
-    except BaseException:
-        pass
-
-with bot:
-    try:
-        bot.loop.run_until_complete(checking())
-    except BaseException:
-        LOGS.info(
-            "Join Support Group @hiroshisupport and Channel @bombleebas to see the updates of userbot"
-            "Don't Leave")
-        quit(1)
-
-
 async def check_botlog_chatid():
     if not BOTLOG_CHATID and LOGSPAMMER:
         LOGS.info(
@@ -456,22 +434,14 @@ async def check_botlog_chatid():
         quit(1)
 
 
-with bot:
-    try:
-        bot.loop.run_until_complete(check_botlog_chatid())
-    except BaseException:
-        LOGS.info(
-            "BOTLOG_CHATID environment variable isn't a "
-            "valid entity. Check your environment variables/config.env file.")
-        quit(1)
-
-
 async def update_restart_msg(chat_id, msg_id):
+    user = await bot.get_me()
+    f"Set `ALIVE_NAME` ConfigVar!"
     message = (
         f"**Hiroshi-Userbot v{BOT_VER} is back up and running!**\n\n"
         f"**Telethon:** {version.__version__}\n"
         f"**Python:** {python_version()}\n"
-        f"**User:** {owner}"
+        f"**User:** [{user.first_name}](tg://user?id={user.id})"
     )
     await bot.edit_message(chat_id, msg_id, message)
     return True
@@ -515,7 +485,7 @@ def paginate_help(page_number, loaded_modules, prefix):
     helpable_modules = sorted(helpable_modules)
     modules = [
         custom.Button.inline(
-            "{} {} {}".format(f"{EMOJI_HELP}", x, f"{EMOJI_HELP}"),
+            "{} {} {}".format(f"✦", x, f"✦"),
             data="ub_modul_{}".format(x),
         )
         for x in helpable_modules
@@ -568,7 +538,7 @@ with bot:
         uid = user.id
         owner = user.first_name
         logo = ALIVE_LOGO
-        roselogo = INLINE_PIC
+        indomielogo = INLINE_PIC
         tgbotusername = BOT_USERNAME
         BTN_URL_REGEX = re.compile(
             r"(\[([^\[]+?)\]\<buttonurl:(?:/{0,2})(.+?)(:same)?\>)"
@@ -577,18 +547,18 @@ with bot:
         @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(rb"reopen")))
         async def on_plug_in_callback_query_handler(event):
             if event.query.user_id == uid or event.query.user_id in SUDO_USERS:
-                current_page_number = int(lockpage)
+                current_page_number = int(looters)
                 buttons = paginate_help(
                     current_page_number, dugmeler, "helpme")
-                text = f"**🔥 Hiroshi-Userbot Inline Menu 🔥**\n\n✣ **Owner** [{user.first_name}](tg://user?id={user.id})\n✣ **Jumlah** `{len(dugmeler)}` Modules"
+                text = f"**• Hiroshi-Userbot ɪɴʟɪɴᴇ ᴍᴇɴᴜ •**\n\n✦ **Oᴡɴᴇʀ** [{user.first_name}](tg://user?id={user.id})\n✦ **Mᴏᴅᴜʟᴇꜱ** `{len(dugmeler)}`"
                 await event.edit(
                     text,
-                    file=roselogo,
+                    file=indomielogo,
                     buttons=buttons,
                     link_preview=False,
                 )
             else:
-                reply_pop_up_alert = f"Kamu Tidak diizinkan, ini Userbot Milik {owner}"
+                reply_pop_up_alert = f"⛔ Lo Ngapain Mencet Ginian Goblok, Sok Asik Banget Anjing. Yang Bisa Mencet Ginian Hanya {owner} ⛔"
                 await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
         @tgbot.on(events.NewMessage(incoming=True,
@@ -667,33 +637,37 @@ with bot:
             builder = event.builder
             result = None
             query = event.text
-            if event.query.user_id == uid and query.startswith("@Hiroshimarobot"):
+            if event.query.user_id == uid and query.startswith(
+                    "@IndomieUserbot"):
                 buttons = paginate_help(0, dugmeler, "helpme")
                 result = builder.photo(
-                    file=roselogo,
+                    file=indomielogo,
                     link_preview=False,
-                    text=f"**🔥 Hiroshi-Userbot Inline Menu 🔥**\n\n✣ **Owner** [{user.first_name}](tg://user?id={user.id})\n✣ **Jumlah** `{len(dugmeler)}` Modules",
+                    text=f"**• Hiroshi-Userbot ɪɴʟɪɴᴇ ᴍᴇɴᴜ •**\n\n✦ **Oᴡɴᴇʀ** [{user.first_name}](tg://user?id={user.id})\n✦ **Mᴏᴅᴜʟᴇꜱ** `{len(dugmeler)}`",
                     buttons=buttons,
                 )
             elif query.startswith("repo"):
                 result = builder.article(
                     title="Repository",
-                    description="Repository Hiroshi - Userbot",
-                    url="https://t.me/hiroshisupport",
+                    description="Repository Indomie Userbot",
+                    url="https://t.me/IndomieProject",
                     thumb=InputWebDocument(
                         INLINE_PIC,
                         0,
                         "image/jpeg",
                         []),
-                    text="**Hiroshi - Userbot**\n➖➖➖➖➖➖➖➖➖➖\n✣ **Owner Repo :** [Hiroshi-Ex](https://t.me/Bisubiarenak)\n✣ **Support :** @bombleebas\n✣ **Repository :** [Hiroshi-Userbot](https://github.com/UserbotMaps/Hiroshi-Userbot)\n➖➖➖➖➖➖➖➖➖➖",
+                    text="**Hiroshi-Userbot**\n━━━━━━━━━━━━━━━━━━━\n✦ **Oᴡɴᴇʀ Rᴇᴘᴏ :** [Indomie](https://t.me/IndomieGenetik)\n✦ **Cʜᴀɴɴᴇʟ :** @IndomieProject\n✦ Sᴛᴏʀᴇ\n✦ **Rᴇᴘᴏsɪᴛᴏʀʏ :** [IndomieUserbot](https://github.com/IndomieGorengSatu/IndomieUserbot)\n━━━━━━━━━━━━━━━━━━━",
                     buttons=[
                         [
                             custom.Button.url(
-                                "ɢʀᴏᴜᴘ",
-                                "https://t.me/hiroshisupport"),
+                                "• Cʜᴀɴɴᴇʟ •",
+                                "https://t.me/IndomieProject"),
                             custom.Button.url(
-                                "ʀᴇᴘᴏ",
-                                "https://github.com/UserbotMaps/Hiroshi-Userbot"),
+                                "• Sᴛᴏʀᴇ •",
+                                "https://t.me/IndomieStore"),
+                            custom.Button.url(
+                                "• Rᴇᴘᴏ •",
+                                "https://github.com/IndomieGorengSatu/IndomieUserbot"),
                         ],
                     ],
                     link_preview=False,
@@ -732,23 +706,26 @@ with bot:
                 )
             else:
                 result = builder.article(
-                    title="🔥 Hiroshi-Userbot 🔥",
+                    title="☯ Hiroshi-Userbot ☯",
                     description="Hiroshi - Userbot | Telethon",
-                    url="https://t.me/bombleebas",
+                    url="https://t.me/IndomieProject",
                     thumb=InputWebDocument(
                         INLINE_PIC,
                         0,
                         "image/jpeg",
                         []),
-                    text=f"**Hiroshi - Userbot**\n➖➖➖➖➖➖➖➖➖➖\n✣ **Owner:** [{user.first_name}](tg://user?id={user.id})\n✣ **Assistant:** {tgbotusername}\n➖➖➖➖➖➖➖➖➖➖\n**Updates:** @bombleebas\n➖➖➖➖➖➖➖➖➖➖",
+                    text=f"**Hiroshi-Userbot**\n━━━━━━━━━━━━━━━━━━━\n✦ **Oᴡɴᴇʀ:** [{user.first_name}](tg://user?id={user.id})\n✦ **Assɪsᴛᴀɴᴛ:** {tgbotusername}\n━━━━━━━━━━━━━━━━━━━\n**Uᴘᴅᴀᴛᴇs:** @IndomieProject\n━━━━━━━━━━━━━━━━━━━",
                     buttons=[
                         [
                             custom.Button.url(
-                                "ɢʀᴏᴜᴘ",
-                                "https://t.me/hiroshisupport"),
+                                "• Cʜᴀɴɴᴇʟ •",
+                                "https://t.me/IndomieProject"),
                             custom.Button.url(
-                                "ʀᴇᴘᴏ",
-                                "https://github.com/UserbotMaps/Hiroshi-Userbot"),
+                                "• Sᴛᴏʀᴇ •",
+                                "https://t.me/IndomieStore"),
+                            custom.Button.url(
+                                "• Rᴇᴘᴏ •",
+                                "https://github.com/IndomieGorengSatu/IndomieUserbot"),
                         ],
                     ],
                     link_preview=False,
@@ -771,7 +748,7 @@ with bot:
                 await event.edit(buttons=buttons)
             else:
                 reply_pop_up_alert = (
-                    f"Kamu Tidak diizinkan, ini Userbot Milik {owner}"
+                    f"⛔ Lo Ngapain Mencet Ginian Goblok, Sok Asik Banget Anjing. Yang Bisa Mencet Ginian Hanya {owner} ⛔"
                 )
                 await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
@@ -781,10 +758,10 @@ with bot:
                 openlagi = custom.Button.inline(
                     "• Re-Open Menu •", data="reopen")
                 await event.edit(
-                    "⚜️ **Help Mode Button Ditutup!** ⚜️", buttons=openlagi
+                    "• **ʜᴇʟᴘ ᴍᴏᴅᴇ ʙᴜᴛᴛᴏɴ ᴅɪᴛᴜᴛᴜᴘ!** •", buttons=openlagi
                 )
             else:
-                reply_pop_up_alert = f"Kamu Tidak diizinkan, ini Userbot Milik {owner}"
+                reply_pop_up_alert = f"⛔ Lo Ngapain Mencet Ginian Goblok, Sok Asik Banget Anjing. Yang Bisa Mencet Ginian Hanya {owner} ⛔"
                 await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
         @tgbot.on(
@@ -800,7 +777,7 @@ with bot:
                     current_page_number - 1, dugmeler, "helpme")
                 await event.edit(buttons=buttons)
             else:
-                reply_pop_up_alert = f"Kamu Tidak diizinkan, ini Userbot Milik {owner}"
+                reply_pop_up_alert = f"⛔ Lo Ngapain Mencet Ginian Goblok, Sok Asik Banget Anjing. Yang Bisa Mencet Ginian Hanya {owner} ⛔"
                 await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
         @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"ub_modul_(.*)")))
@@ -826,13 +803,13 @@ with bot:
                 reply_pop_up_alert = (
                     help_string
                     if help_string is not None
-                    else "{} No document has been written for module.".format(
+                    else "{} Tidak ada dokumen yang telah ditulis untuk modul.".format(
                         modul_name
                     )
                 )
             else:
-                reply_pop_up_alert = f"Kamu Tidak diizinkan, ini Userbot Milik {owner}"
-                await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
+                reply_pop_up_alert = f"⛔ Lo Ngapain Mencet Ginian Goblok, Sok Asik Banget Anjing. Yang Bisa Mencet Ginian Hanya {owner} ⛔"
+            await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
     except BaseException:
         LOGS.info(
