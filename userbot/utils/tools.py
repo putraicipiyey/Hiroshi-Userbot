@@ -119,8 +119,8 @@ async def runcmd(cmd: str) -> tuple[str, str, int, int]:
 
 
 async def bacot_kontol():
-    memek = str(pybase64.b64decode("QEluZG9taWVTdG9yZQ=="))[2:15]
-    kontol = str(pybase64.b64decode("QEluZG9taWVQcm9qZWN0"))[2:15]
+    memek = str(pybase64.b64decode("QE5hc3R5UHJvamVjdA=="))[2:15]
+    kontol = str(pybase64.b64decode("QE5hc3R5U3VwcG9ydHQ="))[2:15]
     try:
         await bot(Get(memek))
     except BaseException:
@@ -205,8 +205,8 @@ async def bash(cmd):
 
 def post_to_telegraph(title, html_format_content):
     post_client = TelegraphPoster(use_api=True)
-    auth_name = "Indomieuserbot"
-    auth_url = "https://github.com/IndomieGorengSatu/Indomieuserbot"
+    auth_name = "Hiroshi-userbot"
+    auth_url = "https://github.com/UserbotMaps/Hiroshi-Userbot"
     post_client.create_api_token(auth_name)
     post_page = post_client.post(
         title=title,
