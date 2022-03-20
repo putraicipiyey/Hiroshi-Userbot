@@ -1,4 +1,3 @@
-
 from telethon.tl.types import MessageEntityMentionName
 
 from userbot.core.logger import logging
@@ -8,10 +7,10 @@ LOGS = logging.getLogger("userbot")
 
 
 async def get_user_from_event(
-    event, kyyevent=None, secondgroup=None, nogroup=False, noedits=False
+    event, roseevent=None, secondgroup=None, nogroup=False, noedits=False
 ):  # sourcery no-metrics
-    if hiroevent is None:
-        hiroevent = event
+    if roseevent is None:
+        roseevent = event
     if nogroup is False:
         if secondgroup:
             args = event.pattern_match.group(2).split(" ", 1)
@@ -23,14 +22,11 @@ async def get_user_from_event(
             user = args[0]
             if len(args) > 1:
                 extra = "".join(args[1:])
-            if user.isnumeric() or (user.startswith("-")
-                                    and user[1:].isnumeric()):
+            if user.isnumeric() or (user.startswith("-") and user[1:].isnumeric()):
                 user = int(user)
             if event.message.entities:
                 probable_user_mention_entity = event.message.entities[0]
-                if isinstance(
-                        probable_user_mention_entity,
-                        MessageEntityMentionName):
+                if isinstance(probable_user_mention_entity, MessageEntityMentionName):
                     user_id = probable_user_mention_entity.user_id
                     user_obj = await event.client.get_entity(user_id)
                     return user_obj, extra
@@ -52,18 +48,18 @@ async def get_user_from_event(
             previous_message = await event.get_reply_message()
             if previous_message.from_id is None:
                 if not noedits:
-                    await edit_delete(hiroevent, "`Well that's an anonymous admin !`")
+                    await edit_delete(roseevent, "`Well that's an anonymous admin !`")
                 return None, None
             user_obj = await event.client.get_entity(previous_message.sender_id)
             return user_obj, extra
         elif not args:
             if not noedits:
                 await edit_delete(
-                    hiroevent, "`Pass the user's username, id or reply!`", 5
+                    roseevent, "`Pass the user's username, id or reply!`", 5
                 )
             return None, None
     except Exception as e:
         LOGS.error(str(e))
     if not noedits:
-        await edit_delete(hiroevent, "__Couldn't fetch user to proceed further__")
+        await edit_delete(roseevent, "__Couldn't fetch user to proceed further__")
     return None, None
