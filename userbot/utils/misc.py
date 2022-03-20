@@ -178,8 +178,7 @@ async def create_quotly(
         raise er
     if request.get("ok"):
         with open(file_name, "wb") as file:
-            image = base64.decodebytes(
-                request["result"]["image"].encode("utf-8"))
+            image = base64.decodebytes(request["result"]["image"].encode("utf-8"))
             file.write(image)
         return file_name
     raise Exception(str(request))
@@ -188,7 +187,7 @@ async def create_quotly(
 async def Carbon(
     code,
     base_url="https://carbonara-42.herokuapp.com/api/cook",
-    file_name="Man-Userbot",
+    file_name="Hiro-Userbot",
     **kwargs,
 ):
     kwargs["code"] = code
@@ -205,11 +204,11 @@ async def animator(media, mainevent, textevent):
     w, h = (-1, 512) if h > w else (512, -1)
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
         os.makedirs(TEMP_DOWNLOAD_DIRECTORY)
-    Risman = await mainevent.client.download_media(media, TEMP_DOWNLOAD_DIRECTORY)
+    Indomie = await mainevent.client.download_media(media, TEMP_DOWNLOAD_DIRECTORY)
     await textevent.edit("`Converting...`")
     await runcmd(
-        f"ffmpeg -ss 00:00:00 -to 00:00:02.900 -i {Risman} -vf scale={w}:{h} -c:v libvpx-vp9 -crf 30 -b:v 560k -maxrate 560k -bufsize 256k -an Video.webm"
+        f"ffmpeg -ss 00:00:00 -to 00:00:02.900 -i {Indomie} -vf scale={w}:{h} -c:v libvpx-vp9 -crf 30 -b:v 560k -maxrate 560k -bufsize 256k -an Video.webm"
     )
-    os.remove(Risman)
+    os.remove(Indomie)
     vid = "Video.webm"
     return vid
