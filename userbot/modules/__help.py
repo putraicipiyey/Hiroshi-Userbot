@@ -1,7 +1,8 @@
 from userbot import BOT_USERNAME, CMD_HELP, bot
 from userbot.utils import edit_or_reply, edit_delete, hiro_cmd
 
-DEFAULTUSER = user.first_name
+aku = await bot.get_me()
+DEFAULTUSER = aku.first_name
 CUSTOM_HELP_EMOJI = "✨"
 
 
