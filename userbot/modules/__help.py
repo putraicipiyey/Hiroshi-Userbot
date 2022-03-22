@@ -1,4 +1,4 @@
-from userbot import BOT_USERNAME, CMD_HELP, bot, user
+from userbot import BOT_USERNAME, CMD_HELP, bot,
 from userbot.utils import edit_delete, edit_or_reply, hiro_cmd
 
 user = bot.get_me()
