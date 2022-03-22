@@ -8,20 +8,20 @@
 import sys
 from importlib import import_module
 
-import requests
-from telethon.tl.functions.channels import InviteToChannelRequest as Addbot
 
 from userbot import (
-    BOTLOG_CHATID,
-    BOT_USERNAME,
     BOT_TOKEN,
+    BOT_USERNAME,
     BOT_VER,
+    BOTLOG_CHATID,
+    ALIVE_LOGO,
     LOGS,
     bot,
     call_py,
 )
 from userbot.modules import ALL_MODULES
 from userbot.utils import autobot
+from userbot.utils.tools import bacot_kontol
 
 try:
     for module_name in ALL_MODULES:
@@ -29,17 +29,21 @@ try:
     bot.start()
     call_py.start()
     user = bot.get_me()
+    LOGS.info(f"♨Hiroshi Userbot♨ ⚙️ V{BOT_VER} [ TELAH DIAKTIFKAN! ]")
+    LOGS.info(f"Jika {user.first_name} Membutuhkan Bantuan, Silahkan Tanyakan di Grup https://t.me/hiroshisupport")
 
-LOGS.info(
-    f"Jika {user.first_name} Membutuhkan Bantuan, Silahkan Tanyakan di Grup https://t.me/NastySupportt")
-LOGS.info(
-    f"✨Kyy-Userbot✨ ⚙️ V{BOT_VER} [TELAH DIAKTIFKAN!]")
+except BaseException as e:
+    LOGS.info(str(e), exc_info=True)
+    sys.exit(1)
 
 
-async def check_alive():
+async def userbot_on():
+    user = await bot.get_me()
     try:
         if BOTLOG_CHATID != 0:
-            await bot.send_message(BOTLOG_CHATID, "✨ **Kyy Userbot Berhasil Diaktifkan**!!\n━━━━━━━━━━━━━━━\n➠ **Userbot Version** - 3.1.0@Kyy-Userbot\n➠ **Ketik** `.ping` **Untuk Mengecheck Bot**\n━━━━━━━━━━━━━━━\n➠ **Powered By:** @NastyProject ")
+            await bot.send_file(
+                BOTLOG_CHATID, ALIVE_LOGO, caption=f"**Hiroshi Userbot Berhasil Diaktifkan ♨**\n━━━━━━━━━━━━━━━━━━━\n✦ **Oᴡɴᴇʀ Bᴏᴛ :** [{user.first_name}](tg://user?id={user.id})\n✦ **Bᴏᴛ Vᴇʀ :** `8.2`\n━━━━━━━━━━━━━━━━━━━\n✦ **Sᴜᴘᴘᴏʀᴛ​ :** @hiroshisupport\n✦ **Sᴛᴏʀᴇ​ :** @hiroshimabes \n━━━━━━━━━━━━━━━━━━━"
+            )
     except Exception as e:
         LOGS.info(str(e))
     try:
@@ -47,13 +51,14 @@ async def check_alive():
     except BaseException:
         pass
 
-bot.loop.run_until_complete(check_alive())
+
+bot.loop.run_until_complete(userbot_on())
+bot.loop.run_until_complete(bacot_kontol())
 if not BOT_TOKEN:
     LOGS.info(
-        "BOT_TOKEN Vars tidak terisi, Memulai Membuat BOT Otomatis di @Botfather..."
+        "Vars BOT_TOKEN ga di isi, otw bikin bot di @Botfather ngeeengg..."
     )
     bot.loop.run_until_complete(autobot())
-
 if len(sys.argv) not in (1, 3, 4):
     bot.disconnect()
 else:
