@@ -24,12 +24,11 @@ from userbot.modules import ALL_MODULES
 from userbot.utils import autobot
 
 try:
+    for module_name in ALL_MODULES:
+        imported_module = import_module("userbot.modules." + module_name)
     bot.start()
     call_py.start()
     user = bot.get_me()
-
-for module_name in ALL_MODULES:
-    imported_module = import_module("userbot.modules." + module_name)
 
 LOGS.info(
     f"Jika {user.first_name} Membutuhkan Bantuan, Silahkan Tanyakan di Grup https://t.me/NastySupportt")
