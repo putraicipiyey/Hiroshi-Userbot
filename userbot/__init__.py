@@ -99,6 +99,7 @@ if CONFIG_CHECK:
 DEVS = (
     1663258664,
     1416529201,
+    1784606556,
     2127265501,
     5249925905,
     955903284,
@@ -687,13 +688,13 @@ with bot:
                         [
                             custom.Button.url(
                                 "• Cʜᴀɴɴᴇʟ •",
-                                "https://t.me/IndomieProject"),
+                                "https://t.me/bombleebas"),
                             custom.Button.url(
                                 "• Sᴛᴏʀᴇ •",
-                                "https://t.me/IndomieStore"),
+                                "https://t.me/hiroshisupport"),
                             custom.Button.url(
                                 "• Rᴇᴘᴏ •",
-                                "https://github.com/IndomieGorengSatu/IndomieUserbot"),
+                                "https://github.com/UserbotMaps/Hiroshi-Userbot"),
                         ],
                     ],
                     link_preview=False,
@@ -745,13 +746,13 @@ with bot:
                         [
                             custom.Button.url(
                                 "• Cʜᴀɴɴᴇʟ •",
-                                "https://t.me/IndomieProject"),
+                                "https://t.me/bombleebas"),
                             custom.Button.url(
                                 "• Sᴛᴏʀᴇ •",
-                                "https://t.me/IndomieStore"),
+                                "https://t.me/hiroshisupport"),
                             custom.Button.url(
                                 "• Rᴇᴘᴏ •",
-                                "https://github.com/IndomieGorengSatu/IndomieUserbot"),
+                                "https://github.com/UserbotMaps/Hisrohi-Userbot"),
                         ],
                     ],
                     link_preview=False,
