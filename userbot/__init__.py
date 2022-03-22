@@ -454,7 +454,7 @@ with bot:
         bot.loop.run_until_complete(checking())
     except BaseException:
         LOGS.info(
-            "Join Support Channel @firdausnation to see the updates of userbot"
+            "Join Support Channel @hiroshimabes to see the updates of userbot"
             "Do not Leave!")
         quit(1)
 
@@ -494,7 +494,8 @@ with bot:
 
 
 async def check_alive():
-    await bot.send_file(BOTLOG_CHATID, ALIVE_LOGO, caption=f"**Frds-Userbot Berhasil Diaktifkan ♨**\n━━━━━━━━━━━━━━━━━━━\n✦ **ʙᴏᴛ ᴏꜰ :** `{ALIVE_NAME}`\n✦ **ʙᴏᴛ ᴠᴇʀ :** `8.2`\n━━━━━━━━━━━━━━━━━━━\n✦ **support​ :** @Frdssupport\n✦ *Channel :** @Firdausnation \n━━━━━━━━━━━━━━━━━━━")
+    aku = await bot.get_me()
+    await bot.send_file(BOTLOG_CHATID, ALIVE_LOGO, caption=f"**Hiroshi-Userbot Berhasil Diaktifkan ♨**\n━━━━━━━━━━━━━━━━━━━\n✦ **ʙᴏᴛ ᴏꜰ :** [{aku.first_name}](tg://user?id={aku.id})\n✦ **ʙᴏᴛ ᴠᴇʀ :** `8.2`\n━━━━━━━━━━━━━━━━━━━\n✦ **support​ :** @hiroshisupport\n✦ *Channel :** @hiroshimabes \n━━━━━━━━━━━━━━━━━━━")
     return
 
 with bot:
@@ -527,7 +528,7 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
 async def update_restart_msg(chat_id, msg_id):
     DEFAULTUSER = ALIVE_NAME or "Set `ALIVE_NAME` ConfigVar!"
     message = (
-        f"**⚡𝐅𝐑𝐃𝐒-𝐔𝐒𝐄𝐑𝐁𝐎𝐓⚡{BOT_VER} Sedang berjalan!**\n\n"
+        f"**⚡Hiroshi-Userbot⚡{BOT_VER} Sedang berjalan!**\n\n"
         f"**Telethon:** {version.__version__}\n"
         f"**Python:** {python_version()}\n"
         f"**User:** {DEFAULTUSER}"
@@ -627,7 +628,7 @@ with bot:
             try:
                 tgbotusername = BOT_USERNAME
                 if tgbotusername is not None:
-                    results = await event.client.inline_query(tgbotusername, "@IdNyaZonk")
+                    results = await event.client.inline_query(tgbotusername, "@Bisubiarenak")
                     await results[0].click(
                         event.chat_id, reply_to=event.reply_to_msg_id, hide_via=True
                     )
@@ -662,7 +663,7 @@ with bot:
                     buttons=[
                         [
                             Button.url("ʀᴇᴘᴏ​",
-                                       "https://github.com/Frds-Ubot/Frds-Userbot")],
+                                       "https://github.com/UserbotMaps/Hiroshi-Userbot")],
                     ]
                 )
 
@@ -673,7 +674,7 @@ with bot:
             if event.message.from_id != uid:
                 await event.client.get_entity(event.chat_id)
                 await event.reply(
-                    f"{START_WELCOME}\n\n**Powered By** : @IdNyaZonk\n\n",
+                    f"{START_WELCOME}\n\n**Powered By** : @Bisubiarenak\n\n",
                     buttons=[
                         [
                             custom.Button.inline(
@@ -707,9 +708,9 @@ with bot:
             event.builder
             query = event.text
             if event.query.user_id == uid and query.startswith(
-                    "@IdNyaZonk"):
+                    "@Bisubiarenak"):
                 buttons = paginate_help(0, dugmeler, "helpme")
-                text = f"Usᴇʀʙᴏᴛ​ Tᴇʟᴇɢʀᴀᴍ\n\n**ɪɴʟɪɴᴇ ᴍᴇɴᴜ​**\n\n❥ **ʙᴏᴛ ᴏꜰ :** {DEFAULTUSER}\n❥ **ʙᴏᴛ ᴠᴇʀ :** 1.0\n❥ **ᴍᴏᴅᴜʟᴇꜱ :** {len(plugins)}\n❥ **ʙᴏᴛ :** @{BOT_USERNAME} "
+                text = f"Usᴇʀʙᴏᴛ​ Tᴇʟᴇɢʀᴀᴍ\n\n**ɪɴʟɪɴᴇ ᴍᴇɴᴜ​**\n\n❥ **ʙᴏᴛ ᴏꜰ :** {DEFAULTUSER}\n❥ **ʙᴏᴛ ᴠᴇʀ :** 8.3\n❥ **ᴍᴏᴅᴜʟᴇꜱ :** {len(plugins)}\n❥ **ʙᴏᴛ :** @{BOT_USERNAME} "
                 await event.edit(text,
                                  file=relogo,
                                  buttons=buttons,
@@ -742,10 +743,10 @@ with bot:
         async def on_plug_in_callback_query_handler(event):
             if event.query.user_id == uid:
                 text = (
-                    f"❁ __Gue Adalah Frds-Userbot Yang Hanya Dipake Untuk Caper Oleh User Tele__.\n\n"
+                    f"❁ __Gue Adalah Hiroshi-Userbot Yang Hanya Dipake Untuk Caper Oleh User Tele__.\n\n"
                     f"❁ __Gue Dibikin Dengan Air kental Yang Dinamakan Sperma__.\n\n"
                     f"❁ __Gausa Banyak Nanya, Gue Hanya Punya 1816 Commands__.\n\n"
-                    f"© @IdNyaZonk")
+                    f"© @Bisubiarenak")
                 await event.edit(
                     text,
                     file=kyylogo,
@@ -755,8 +756,7 @@ with bot:
                     ]
                 )
             else:
-                reply_pop_up_alert = f"🤴 Name : {DEFAULTUSER}\n🤖 Bot Ver : 1.0\n🛠 Modules : {len(plugins)}\n∞ Branch : IndomieUserbot"
-                await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
+                reply_pop_up_alert = f"🤴 Name : {DEFAULTUSER}\n🤖 Bot Ver : 8.3\n🛠 Modules : {len(plugins)}\n∞ Branch : Hiroshi-Userbot"
 
         @tgbot.on(
             events.callbackquery.CallbackQuery(  # pylint:disable=E0602
@@ -821,9 +821,9 @@ with bot:
                     f"°__Menampilkan Alive Punya Bapakmu__.\n\n"
                     f"× `.set var ALIVE_LOGO` [**LINK**]\n"
                     f"°__Mengubah Foto Alive Bapakmu, Yang Kamu Inginkan__.\n\n"
-                    f"× `.set var RE_TEKS_KUSTOM` [**TEKS**]\n"
+                    f"× `.set var HIRO_TEKS_KUSTOM` [**TEKS**]\n"
                     f"°__Mengganti Teks Yang Ada Command ReAlive__.\n\n"
-                    f"© @IdNyaZonk")
+                    f"© @Bisubiarenak")
                 await event.edit(
                     text,
                     file=relogo,
@@ -853,7 +853,7 @@ with bot:
                     f"°__Mengaktifkan Pmpermitmu Atau Disebut Pesan Otomatis__.\n\n"
                     f"× `.set pm_msg` [**REPLYCHAT**]\n"
                     f"°__Mengganti Teks Pmpermit Gimana Yang Lo Mau__.\n\n"
-                    f"© @IdNyaZonk")
+                    f"© @Bisubiarenak")
                 await event.edit(
                     text,
                     file=relogo,
@@ -883,7 +883,7 @@ with bot:
                     f"°__Mengubah Emoji Inline Yang Ada Dicommand__ `.helpme`\n\n"
                     f"× `.set var INLINE_PIC` [**LINK**]\n"
                     f"°__Mengubah Foto Yang Ada Dicommand__ `.helpme`\n\n"
-                    f"© @IdNyaZonk")
+                    f"© @Bisubiarenak")
                 await event.edit(
                     text,
                     file=relogo,
@@ -911,7 +911,7 @@ with bot:
                     f"Modules Name **pmbot**\n\n"
                     f"× `.set var START_WELCOME` [**TEKS**] \n"
                     f"°__Kamu Juga Bisa Mengubah Start Welcome Untuk Bot Kamu Yang Ini, Dengan Cara Diatas Dan Kata Kata Bebas__.\n\n"
-                    f"© @IdNyaZonk")
+                    f"© @Bisubiarenak")
                 await event.edit(
                     text,
                     file=relogo,
@@ -937,11 +937,11 @@ with bot:
             if event.query.user_id == uid:
                 text = (
                     f"Modules Name **Update**\n\n"
-                    f"× **Apdet Data Untuk Frds-Userbot, Command Untuk Update**.\n"
+                    f"× **Apdet Data Untuk Hiroshi-Userbot, Command Untuk Update**.\n"
                     f"⚒Apdet Data :\n"
                     f"`.update deploy`\n"
                     f"`update`\n\n"
-                    f"© @IdNyaZonk")
+                    f"© @Bisubiarenak")
                 await event.edit(
                     text,
                     file=relogo,
@@ -1006,7 +1006,7 @@ with bot:
                     f"**|**  [`{percentage}`**%**]\n"
                     f" ✠➲ ʙᴏᴛ ᴏꜰ : [**{ALIVE_NAME}**]\n"
                     "\n╚════════════════════╝"
-                    f"© @IdNyaZonk")
+                    f"© @Bisubiarenak")
                 await event.edit(
                     text,
                     file=relogo,
@@ -1029,7 +1029,7 @@ with bot:
         async def killdabot(event):
             if event.query.user_id == uid:
                 text = (
-                    f"**Restaring Frds-Userbot**...")
+                    f"**Restaring Hiroshi-Userbot**...")
                 await event.edit(
                     text,
                     file=relogo,
@@ -1057,7 +1057,7 @@ with bot:
                     buttons=[
                         [
                             Button.url("ᴄʜᴀɴɴᴇʟ",
-                                       "t.me/frdssupport")],
+                                       "t.me/hiroshisupport")],
                     ]
                 )
 
@@ -1072,33 +1072,33 @@ with bot:
                 result = builder.photo(
                     file=relogo,
                     link_preview=False,
-                    text=f"Usᴇʀʙᴏᴛ​ Tᴇʟᴇɢʀᴀᴍ\n\n**ɪɴʟɪɴᴇ ᴍᴇɴᴜ​​**\n\n❥ **ʙᴏᴛ ᴏꜰ :** {DEFAULTUSER}\n❥ **ʙᴏᴛ ᴠᴇʀ :** 1.0\n❥ **ᴍᴏᴅᴜʟᴇꜱ :** {len(plugins)}\n❥ **ʙᴏᴛ :** @{BOT_USERNAME}".format(
+                    text=f"Usᴇʀʙᴏᴛ​ Tᴇʟᴇɢʀᴀᴍ\n\n**ɪɴʟɪɴᴇ ᴍᴇɴᴜ​​**\n\n❥ **ʙᴏᴛ ᴏꜰ :** {DEFAULTUSER}\n❥ **ʙᴏᴛ ᴠᴇʀ :** 8.3\n❥ **ᴍᴏᴅᴜʟᴇꜱ :** {len(plugins)}\n❥ **ʙᴏᴛ :** @{BOT_USERNAME}".format(
                         len(dugmeler),
                     ),
                     buttons=buttons,
                 )
             elif query.startswith("tb_btn"):
                 result = builder.article(
-                    "Help From ♨ɪɴᴅᴏᴍɪᴇᴜꜱᴇʀʙᴏᴛ♨",
+                    "Help From Hiroshi-Userbot",
                     text="Daftar Plugins",
                     buttons=[],
                     link_preview=True)
             else:
                 result = builder.article(
-                    " ♨ɪɴᴅᴏᴍɪᴇᴜꜱᴇʀʙᴏᴛ♨",
-                    text="""°Frds-Userbot°""",
+                    " Hiroshi-Userbot",
+                    text="""°Hiroshi-Userbot°"""
                     buttons=[
                         [
                             custom.Button.url(
-                                "Frds",
-                                "https://github.com/Frds-ubot/Frds-Userbot"),
+                                "Hiroshi-Userbot",
+                                "https://github.com/UserbotMaps/Hiroshi-Userbot"),
 
                             custom.Button.url(
                                 "Channel",
-                                "t.me/firdausnation")],
+                                "t.me/hiroshimabes")],
                         [custom.Button.url(
                             "License",
-                            "https://raw.githubusercontent.com/Frds-ubot/Frds-Userbot/Frds-Userbot/LICENSE")],
+                            "https://raw.githubusercontent.com/UserbotMaps/Hiroshi-Userbot/LICENSE")]
                     ],
                     link_preview=False,
                 )
@@ -1135,9 +1135,9 @@ with bot:
                     buttons=[
                         [
                             Button.url("❈ꜱᴜᴘᴘᴏʀᴛ❈",
-                                       "t.me/firdausnation"),
+                                       "t.me/hiroshisupport"),
                             Button.url("❈ᴄʜᴀɴɴᴇʟ❈",
-                                       "t.me/Frdssupport")],
+                                       "t.me/hiroshimabes")],
                         [custom.Button.inline(
                             "°ᴏᴘᴇɴ ᴍᴇɴᴜ°", data="open_plugin")],
                         [custom.Button.inline(
