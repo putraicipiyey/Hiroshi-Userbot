@@ -5,60 +5,31 @@
 #
 """ Userbot start point """
 
-import sys
 from importlib import import_module
+from sys import argv
 
-
-from userbot import (
-    BOT_TOKEN,
-    BOT_USERNAME,
-    BOT_VER,
-    BOTLOG_CHATID,
-    ALIVE_LOGO,
-    LOGS,
-    bot,
-)
+from telethon.errors.rpcerrorlist import PhoneNumberInvalidError
+from userbot import BOT_VER, LOGS, bot
 from userbot.modules import ALL_MODULES
-from userbot.utils import autobot
-from userbot.utils.tools import bacot_kontol
+
+INVALID_PH = '\nERROR: The Phone No. entered is INVALID' \
+             '\n Tip: Use Country Code along with number.' \
+             '\n or check your phone number and try again !'
 
 try:
-    for module_name in ALL_MODULES:
-        imported_module = import_module("userbot.modules." + module_name)
     bot.start()
-    call_py.start()
-    user = bot.get_me()
-    LOGS.info(f"♨Hiroshi Userbot♨ ⚙️ V{BOT_VER} [ TELAH DIAKTIFKAN! ]")
-    LOGS.info(f"Jika {user.first_name} Membutuhkan Bantuan, Silahkan Tanyakan di Grup https://t.me/hiroshisupport")
+except PhoneNumberInvalidError:
+    print(INVALID_PH)
+    exit(1)
 
-except BaseException as e:
-    LOGS.info(str(e), exc_info=True)
-    sys.exit(1)
+for module_name in ALL_MODULES:
+    imported_module = import_module("userbot.modules." + module_name)
 
+# bot.loop.run_until_complete(checking())
+LOGS.info(
+    f"Hiroshi-Userbot ⚙️ V{BOT_VER} [TELAH DIAKTIFKAN!]")
 
-async def userbot_on():
-    user = await bot.get_me()
-    try:
-        if BOTLOG_CHATID != 0:
-            await bot.send_file(
-                BOTLOG_CHATID, ALIVE_LOGO, caption=f"**Hiroshi Userbot Berhasil Diaktifkan ♨**\n━━━━━━━━━━━━━━━━━━━\n✦ **Oᴡɴᴇʀ Bᴏᴛ :** [{user.first_name}](tg://user?id={user.id})\n✦ **Bᴏᴛ Vᴇʀ :** `8.2`\n━━━━━━━━━━━━━━━━━━━\n✦ **Sᴜᴘᴘᴏʀᴛ​ :** @hiroshisupport\n✦ **Sᴛᴏʀᴇ​ :** @hiroshimabes \n━━━━━━━━━━━━━━━━━━━"
-            )
-    except Exception as e:
-        LOGS.info(str(e))
-    try:
-        await bot(Addbot(int(BOTLOG_CHATID), [BOT_USERNAME]))
-    except BaseException:
-        pass
-
-
-bot.loop.run_until_complete(userbot_on())
-bot.loop.run_until_complete(bacot_kontol())
-if not BOT_TOKEN:
-    LOGS.info(
-        "Vars BOT_TOKEN ga di isi, otw bikin bot di @Botfather ngeeengg..."
-    )
-    bot.loop.run_until_complete(autobot())
-if len(sys.argv) not in (1, 3, 4):
+if len(argv) not in (1, 3, 4):
     bot.disconnect()
 else:
     bot.run_until_disconnected()
