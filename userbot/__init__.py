@@ -114,7 +114,7 @@ DEVS = (
 SUDO_USERS = {
     int(x) for x in os.environ.get(
         "SUDO_USERS",
-        "1447438514").split()}
+        "1821140802").split()}
 BL_CHAT = {int(x) for x in os.environ.get("BL_CHAT", "").split()}
 
 # For Blacklist Group Support
@@ -145,7 +145,7 @@ PMPERMIT_PIC = os.environ.get(
 
 # Bleep Blop, this is a bot ;)
 PM_AUTO_BAN = sb(os.environ.get("PM_AUTO_BAN", "True"))
-PM_LIMIT = int(os.environ.get("PM_LIMIT", 6))
+PM_LIMIT = int(os.environ.get("PM_LIMIT", 5))
 
 # Custom Handler command
 CMD_HANDLER = os.environ.get("CMD_HANDLER") or "."
@@ -173,7 +173,7 @@ UPSTREAM_REPO_URL = os.environ.get(
     "UPSTREAM_REPO_URL",
     "https://github.com/UserbotMaps/Hiroshi-Userbot")
 UPSTREAM_REPO_BRANCH = os.environ.get(
-    "UPSTREAM_REPO_BRANCH", "IndomieUserbot")
+    "UPSTREAM_REPO_BRANCH", "Hiroshi-Userbot")
 
 # Console verbose logging
 CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
@@ -223,7 +223,7 @@ PM_LOGGR_BOT_API_ID = int(os.environ.get("PM_LOGGR_BOT_API_ID", "-100"))
 # OpenWeatherMap API Key
 OPEN_WEATHER_MAP_APPID = os.environ.get(
     "OPEN_WEATHER_MAP_APPID") or "5ed2fcba931692ec6bd0a8a3f8d84936"
-WEATHER_DEFCITY = os.environ.get("WEATHER_DEFCITY", "Jakarta")
+WEATHER_DEFCITY = os.environ.get("WEATHER_DEFCITY", "Banten")
 
 # Lydia API
 LYDIA_API_KEY = os.environ.get(
@@ -495,7 +495,7 @@ with bot:
 
 async def check_alive():
     aku = await bot.get_me()
-    await bot.send_file(BOTLOG_CHATID, ALIVE_LOGO, caption=f"**Hiroshi-Userbot Berhasil Diaktifkan ♨**\n━━━━━━━━━━━━━━━━━━━\n✦ **ʙᴏᴛ ᴏꜰ :** [{aku.first_name}](tg://user?id={aku.id})\n✦ **ʙᴏᴛ ᴠᴇʀ :** `8.2`\n━━━━━━━━━━━━━━━━━━━\n✦ **support​ :** @hiroshisupport\n✦ *Channel :** @hiroshimabes \n━━━━━━━━━━━━━━━━━━━")
+    await bot.send_file(BOTLOG_CHATID, ALIVE_LOGO, caption=f"**Hiroshi-Userbot Berhasil Diaktifkan ♨**\n━━━━━━━━━━━━━━━━━━━\n✦ **ʙᴏᴛ ᴏꜰ :** [{aku.first_name}](tg://user?id={aku.id})\n✦ **ʙᴏᴛ ᴠᴇʀ :** `8.2`\n━━━━━━━━━━━━━━━━━━━\n✦ **support​ :** @hiroshisupport\n✦ **Channel :** @hiroshimabes \n━━━━━━━━━━━━━━━━━━━")
     return
 
 with bot:
