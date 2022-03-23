@@ -710,7 +710,7 @@ with bot:
             if event.query.user_id == uid and query.startswith(
                     "@Bisubiarenak"):
                 buttons = paginate_help(0, dugmeler, "helpme")
-                text = f"Usᴇʀʙᴏᴛ​ Tᴇʟᴇɢʀᴀᴍ\n\n**ɪɴʟɪɴᴇ ᴍᴇɴᴜ​**\n\n❥ **ʙᴏᴛ ᴏꜰ :** {DEFAULTUSER}\n❥ **ʙᴏᴛ ᴠᴇʀ :** 8.3\n❥ **ᴍᴏᴅᴜʟᴇꜱ :** {len(plugins)}\n❥ **ʙᴏᴛ :** @{BOT_USERNAME} "
+                text = f"Usᴇʀʙᴏᴛ​ Tᴇʟᴇɢʀᴀᴍ\n\n**ɪɴʟɪɴᴇ ᴍᴇɴᴜ​**\n\n❥ **ʙᴏᴛ ᴏꜰ :** {DEFAULTUSER}\n❥ **ʙᴏᴛ ᴠᴇʀ :** 8.3n❥ **ᴍᴏᴅᴜʟᴇꜱ :** {len(plugins)}\n❥ **ʙᴏᴛ :** @{BOT_USERNAME} "
                 await event.edit(text,
                                  file=relogo,
                                  buttons=buttons,
@@ -756,7 +756,8 @@ with bot:
                     ]
                 )
             else:
-                reply_pop_up_alert = f"🤴 Name : {DEFAULTUSER}\n🤖 Bot Ver : 8.3\n🛠 Modules : {len(plugins)}\n∞ Branch : Hiroshi-Userbot"
+                reply_pop_up_alert = f"🤴 Name : {DEFAULTUSER}\n🤖 Bot Ver : 1.0\n🛠 Modules : {len(plugins)}\n∞ Branch : Hiroshi-Userbot"
+                await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
         @tgbot.on(
             events.callbackquery.CallbackQuery(  # pylint:disable=E0602
@@ -1079,18 +1080,18 @@ with bot:
                 )
             elif query.startswith("tb_btn"):
                 result = builder.article(
-                    "Help From Hiroshi-Userbot",
+                    "Help From ♨Hiroshi-Userbot♨",
                     text="Daftar Plugins",
                     buttons=[],
                     link_preview=True)
             else:
                 result = builder.article(
-                    " Hiroshi-Userbot",
-                    text="""°Hiroshi-Userbot°"""
+                    " ♨Hiroshi-Userbot♨",
+                    text="""°Hiroshi-Userbot°""",
                     buttons=[
                         [
                             custom.Button.url(
-                                "Hiroshi-Userbot",
+                                "Frds",
                                 "https://github.com/UserbotMaps/Hiroshi-Userbot"),
 
                             custom.Button.url(
@@ -1098,7 +1099,7 @@ with bot:
                                 "t.me/hiroshimabes")],
                         [custom.Button.url(
                             "License",
-                            "https://raw.githubusercontent.com/UserbotMaps/Hiroshi-Userbot/LICENSE")]
+                            "https://raw.githubusercontent.com/UserbotMaps/Hiroshi-Userbot/Hiroshi-Userbot/LICENSE")],
                     ],
                     link_preview=False,
                 )
