@@ -511,7 +511,7 @@ CMD_HELP.update(
         \n\n  •  **Syntax :** `{cmd}resume`\
         \n  •  **Function : **Untuk melanjutkan pemutaran video/lagu yang sedang diputar\
         \n\n  •  **Syntax :** `{cmd}volume` 1-200\
-        \n  •  **Function : **Untuk mengubah volume (Membutuhkan Hak admin)\
+        \n  •  **Function : **Untuk mengubah volume (Membutuhkan Hak admin Kntl)\
         \n\n  •  **Syntax :** `{cmd}playlist`\
         \n  •  **Function : **Untuk menampilkan daftar putar Lagu/Video\
     "
