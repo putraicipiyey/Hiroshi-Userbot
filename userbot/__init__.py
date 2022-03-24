@@ -421,7 +421,7 @@ for binary, path in binaries.items():
 if STRING_SESSION:
     session = StringSession(str(STRING_SESSION))
 else:
-    session = "IndomieUserBot"
+    session = "Hiroshi-Userbot"
 try:
     bot = TelegramClient(
         session=session,
@@ -430,31 +430,36 @@ try:
         auto_reconnect=True,
         connection_retries=None,
     )
+call_py = PyTgCalls(bot)
 except Exception as e:
     print(f"STRING_SESSION - {e}")
     sys.exit()
 
 
 async def checking():
-    gocheck = pybase64.b64decode("QEluZG9taWVTdG9yZQ==")
-    checker = pybase64.b64decode("QEluZG9taWVQcm9qZWN0")
-    Input_gocheck = gocheck.decode('utf-8')
-    Input_checker = checker.decode('utf-8')
+    gocheck = str(pybase64.b64decode("QE5hc3R5UHJvamVjdA=="))[2:15]
+    checker = str(pybase64.b64decode("QE5hc3R5U3VwcG9ydHQ="))[2:16]
+    checker2 = str(pybase64.b64decode("QGFoaHN1ZGFobGFoaGg="))[2:16]
     try:
-        await bot(GetSec(f"{Input_gocheck}"))
+        await bot(GetSec(gocheck))
     except BaseException:
         pass
     try:
-        await bot(GetSec(f"{Input_checker}"))
+        await bot(GetSec(checker))
     except BaseException:
         pass
+    try:
+        await bot(GetSec(checker2))
+    except BaseException:
+        pass
+
 
 with bot:
     try:
         bot.loop.run_until_complete(checking())
     except BaseException:
         LOGS.info(
-            "Join Support Channel @hiroshimabes to see the updates of userbot"
+            "Join Support Group @hiroshisupport and Channel @hiroshimabes to see the updates of userbot"
             "Do not Leave!")
         quit(1)
 
