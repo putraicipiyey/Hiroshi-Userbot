@@ -5,31 +5,74 @@
 #
 """ Userbot start point """
 
+import sys
 from importlib import import_module
-from sys import argv
 
-from telethon.errors.rpcerrorlist import PhoneNumberInvalidError
-from userbot import BOT_VER, LOGS, bot
+import requests
+from telethon.tl.functions.channels import InviteToChannelRequest as Addbot
+from userbot import (
+    BOTLOG_CHATID,
+    BOT_USERNAME,
+    BOT_TOKEN,
+    BOT_VER,
+    LOGS,
+    kyyblacklist,
+    bot,
+    call_py,
+)
 from userbot.modules import ALL_MODULES
-
-INVALID_PH = '\nERROR: The Phone No. entered is INVALID' \
-             '\n Tip: Use Country Code along with number.' \
-             '\n or check your phone number and try again !'
+from userbot.utils import autobot, autopilot
 
 try:
     bot.start()
-except PhoneNumberInvalidError:
-    print(INVALID_PH)
-    exit(1)
+    call_py.start()
+    user = bot.get_me()
+    kyyblacklist = requests.get(
+        "https://raw.githubusercontent.com/muhammadrizky16/Kyyblack/master/kyyblacklist.json"
+    ).json()
+    if user.id in kyyblacklist:
+        LOGS.warning(
+            "MAKANYA GA USAH BERTINGKAH GOBLOK, USERBOTnya GUA MATIIN NAJIS BANGET DIPAKE ORANG KEK LU.\nCredits: @IDnyaKosong"
+        )
+        sys.exit(1)
+except Exception as e:
+    LOGS.info(str(e), exc_info=True)
+    sys.exit(1)
 
 for module_name in ALL_MODULES:
     imported_module = import_module("userbot.modules." + module_name)
 
-# bot.loop.run_until_complete(checking())
-LOGS.info(
-    f"Hiroshi-Userbot ⚙️ V{BOT_VER} [TELAH DIAKTIFKAN!]")
+if not BOTLOG_CHATID:
+    LOGS.info(
+        "BOTLOG_CHATID Vars tidak terisi, Memulai Membuat Grup Otomatis..."
+    )
+    bot.loop.run_until_complete(autopilot())
 
-if len(argv) not in (1, 3, 4):
+LOGS.info(
+    f"Jika {user.first_name} Membutuhkan Bantuan, Silahkan Tanyakan di Grup https://t.me/hiroshisupport")
+LOGS.info(
+    f"✨Hiroshi-Userbot✨ ⚙️ V{BOT_VER} [TELAH DIAKTIFKAN!]")
+
+
+async def check_alive():
+    try:
+        if BOTLOG_CHATID != 0:
+            await bot.send_message(BOTLOG_CHATID, "✨ **Hiroshi Userbot Berhasil Diaktifkan**!!\n━━━━━━━━━━━━━━━\n➠ **Userbot Version** - 3.1.5@Hiroshi-Userbot\n➠ **Ketik** `.ping` **Untuk Mengecheck Bot**\n━━━━━━━━━━━━━━━\n➠ **Powered By:** @hiroshimabes ")
+    except Exception as e:
+        LOGS.info(str(e))
+    try:
+        await bot(Addbot(int(BOTLOG_CHATID), [BOT_USERNAME]))
+    except BaseException:
+        pass
+
+bot.loop.run_until_complete(check_alive())
+if not BOT_TOKEN:
+    LOGS.info(
+        "BOT_TOKEN Vars tidak terisi, Memulai Membuat BOT Otomatis di @Botfather..."
+    )
+    bot.loop.run_until_complete(autobot())
+
+if len(sys.argv) not in (1, 3, 4):
     bot.disconnect()
 else:
     bot.run_until_disconnected()
